@@ -15,10 +15,10 @@ const CONTACT_LINKS = [
 
 export function Hero() {
   return (
-    <section id="about" className="relative overflow-hidden">
+    <section className="relative overflow-hidden">
       <div className="bg-grid-pattern pointer-events-none absolute inset-0 -z-10" />
 
-      <div className="mx-auto max-w-5xl px-4 pt-16 pb-24 sm:pt-24">
+      <div className="mx-auto flex min-h-[calc(100vh-8rem)] max-w-5xl items-center px-4 py-16">
         <div className="grid gap-10 sm:grid-cols-[minmax(0,320px)_1fr] sm:items-center">
           <div className="relative aspect-[4/5] w-full max-w-sm overflow-hidden rounded-3xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
             <Image
@@ -63,14 +63,6 @@ export function Hero() {
               ))}
             </div>
           </div>
-        </div>
-
-        <div className="mt-16 space-y-4 text-fg-muted">
-          {site.bio.map((paragraph, i) => (
-            <p key={i} className="max-w-3xl leading-relaxed">
-              {paragraph}
-            </p>
-          ))}
         </div>
       </div>
     </section>
