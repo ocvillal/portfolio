@@ -20,7 +20,7 @@ export function ProjectDetail({ project }: { project: Project }) {
       <div className="bg-grid-pattern pointer-events-none absolute inset-0 -z-10" />
       <article className="mx-auto max-w-3xl px-4 py-16">
         <Reveal>
-          <Link href="/#projects" className="text-sm text-fg-muted hover:text-fg">
+          <Link href="/projects/" className="text-sm text-fg-muted hover:text-fg">
             ← Back to projects
           </Link>
 

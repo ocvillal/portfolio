@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { projects } from "@/data/projects";
 import { ScrollSpotlight } from "@/components/scrolly/ScrollSpotlight";
@@ -10,24 +9,18 @@ import { SPOTLIGHT_COLORS } from "@/lib/spotlightColors";
 import { Reveal } from "@/components/motion/Reveal";
 import { SpotlightCard } from "@/components/motion/SpotlightCard";
 
-const featuredProjects = projects.filter((p) => p.featured);
-
 export function ProjectGrid() {
-  const [showAll, setShowAll] = useState(false);
-  const visibleProjects = showAll ? projects : featuredProjects;
-  const remaining = projects.length - featuredProjects.length;
-
   return (
-    <section id="projects" className="relative bg-[var(--color-bg)]">
+    <section className="relative bg-[var(--color-bg)]">
       <div className="bg-grid-pattern pointer-events-none absolute inset-0 -z-10" />
       <div className="mx-auto max-w-5xl px-4 py-16">
         <Reveal>
-          <h2 className="text-sm font-semibold uppercase tracking-widest text-fg-muted">Projects</h2>
+          <h1 className="text-sm font-semibold uppercase tracking-widest text-fg-muted">Projects</h1>
         </Reveal>
 
         <div className="mt-8">
           <ScrollSpotlight
-            items={visibleProjects}
+            items={projects}
             getKey={(project) => project.slug}
             renderItem={(project: Project, index, isActive) => (
               <SpotlightCard
@@ -65,18 +58,6 @@ export function ProjectGrid() {
             renderPanel={(project, index) => <ProjectPanel project={project} index={index} />}
           />
         </div>
-
-        {remaining > 0 && (
-          <div className="mt-10 flex justify-center">
-            <button
-              type="button"
-              onClick={() => setShowAll((v) => !v)}
-              className="rounded-full border border-[var(--color-border)] px-5 py-2.5 text-sm font-semibold text-fg transition-colors hover:bg-[var(--color-bg-secondary)]"
-            >
-              {showAll ? "Show fewer ↑" : `Show ${remaining} more project${remaining === 1 ? "" : "s"} ↓`}
-            </button>
-          </div>
-        )}
       </div>
     </section>
   );
