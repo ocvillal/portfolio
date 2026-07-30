@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { useActiveSection } from "@/lib/useActiveSection";
 
 const LINKS = [
@@ -8,13 +9,18 @@ const LINKS = [
   { href: "#projects", label: "Projects" },
   { href: "#publications", label: "Publications" },
   { href: "#experience", label: "Experience" },
+  { href: "/pics/", label: "Pics" },
   { href: "#contact", label: "Contact" },
 ];
 
-const SECTION_IDS = LINKS.map((link) => link.href.slice(1));
+const SECTION_LINK_INDICES = LINKS.map((link, i) => (link.href.startsWith("#") ? i : null)).filter(
+  (i): i is number => i !== null
+);
+const SECTION_IDS = SECTION_LINK_INDICES.map((i) => LINKS[i].href.slice(1));
 
 export function NavLinks() {
-  const activeIndex = useActiveSection(SECTION_IDS);
+  const sectionIndex = useActiveSection(SECTION_IDS);
+  const activeIndex = sectionIndex < 0 ? -1 : SECTION_LINK_INDICES[sectionIndex];
   const containerRef = useRef<HTMLDivElement | null>(null);
   const linkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
   const [pillStyle, setPillStyle] = useState<{ left: number; width: number } | null>(null);
@@ -43,19 +49,36 @@ export function NavLinks() {
           }}
         />
       )}
-      {LINKS.map((link, i) => (
-        <a
-          key={link.href}
-          href={link.href}
-          ref={(el) => {
-            linkRefs.current[i] = el;
-          }}
-          className="relative rounded-full px-3 py-1.5 text-sm text-fg-muted transition-colors hover:text-fg"
-          style={{ color: activeIndex === i ? "var(--color-fg)" : undefined }}
-        >
-          {link.label}
-        </a>
-      ))}
+      {LINKS.map((link, i) => {
+        const isHash = link.href.startsWith("#");
+        const className = "relative rounded-full px-3 py-1.5 text-sm text-fg-muted transition-colors hover:text-fg";
+        const style = { color: activeIndex === i ? "var(--color-fg)" : undefined };
+        return isHash ? (
+          <a
+            key={link.href}
+            href={link.href}
+            ref={(el) => {
+              linkRefs.current[i] = el;
+            }}
+            className={className}
+            style={style}
+          >
+            {link.label}
+          </a>
+        ) : (
+          <Link
+            key={link.href}
+            href={link.href}
+            ref={(el) => {
+              linkRefs.current[i] = el;
+            }}
+            className={className}
+            style={style}
+          >
+            {link.label}
+          </Link>
+        );
+      })}
     </div>
   );
 }

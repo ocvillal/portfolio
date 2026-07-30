@@ -36,6 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# raw photo sources (optimized derivatives live in public/images/photography)
+/public/images/photos/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
