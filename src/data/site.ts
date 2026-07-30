@@ -14,4 +14,13 @@ export const site = {
     linkedin: "https://www.linkedin.com/in/octavio-villalobos/",
   },
   resumeHref: "/documents/Main_resume_August.pdf",
+  terminalIntro: {
+    query: "who is octavio villalobos?",
+    roleTags: ["Computer Scientist", "AI Engineer", "Terminal Kid"],
+    currentLine: "Currently doing AI research with Markus Eger.",
+    quirkyLine:
+      "Shoots on a 2013 Fujifilm X100S. Long-term plan: shoot only film. Short-term plan: organize the archive.",
+    availabilityLine: "Actively seeking entry-level roles in Product Design, SWE, and FDE.",
+    cta: { label: "enter my work", href: "/projects/" },
+  },
 } as const;
