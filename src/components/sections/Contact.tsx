@@ -3,6 +3,8 @@ import { GithubActivity } from "@/components/github/GithubActivity";
 import { GithubContributions } from "@/components/github/GithubContributions";
 import { Magnetic } from "@/components/motion/Magnetic";
 import { Reveal } from "@/components/motion/Reveal";
+import { Highlight } from "@/components/motion/Highlight";
+import { PAGE_COLORS } from "@/lib/pageColors";
 
 export function Contact() {
   return (
@@ -10,8 +12,15 @@ export function Contact() {
       <div className="mx-auto max-w-5xl px-4 py-16">
         <div className="grid gap-12 sm:grid-cols-2">
           <Reveal>
-            <h1 className="text-sm font-semibold uppercase tracking-widest text-fg-muted">Contact</h1>
-            <h3 className="mt-4 text-3xl font-bold sm:text-4xl">Let&rsquo;s build something.</h3>
+            <h1
+              className="text-sm font-semibold uppercase tracking-widest"
+              style={{ color: PAGE_COLORS.contact }}
+            >
+              Contact
+            </h1>
+            <h3 className="mt-4 text-3xl font-bold sm:text-4xl">
+              Let&rsquo;s build <Highlight color={PAGE_COLORS.contact}>something</Highlight>.
+            </h3>
             <p className="mt-4 max-w-sm text-fg-muted">
               I&rsquo;m actively looking for entry-level roles in Product Design, SWE,
               and FDE. Reach out if that sounds like a fit.

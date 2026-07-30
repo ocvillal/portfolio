@@ -5,6 +5,7 @@ import { ScrollSpotlight } from "@/components/scrolly/ScrollSpotlight";
 import { PublicationPanel } from "./PublicationPanel";
 import { Reveal } from "@/components/motion/Reveal";
 import { SpotlightCard } from "@/components/motion/SpotlightCard";
+import { PAGE_COLORS } from "@/lib/pageColors";
 
 export function Publications() {
   return (
@@ -12,7 +13,12 @@ export function Publications() {
       <div className="bg-grid-pattern pointer-events-none absolute inset-0 -z-10" />
       <div className="mx-auto max-w-5xl px-4 py-16">
         <Reveal>
-          <h1 className="text-sm font-semibold uppercase tracking-widest text-fg-muted">Publications</h1>
+          <h1
+            className="text-sm font-semibold uppercase tracking-widest"
+            style={{ color: PAGE_COLORS.publications }}
+          >
+            Publications
+          </h1>
         </Reveal>
 
         <div className="mt-8">

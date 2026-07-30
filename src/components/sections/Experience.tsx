@@ -7,6 +7,7 @@ import { ScrollSpotlight } from "@/components/scrolly/ScrollSpotlight";
 import { ExperiencePanel } from "./ExperiencePanel";
 import { SkillRow } from "@/components/skills/SkillRow";
 import { SPOTLIGHT_COLORS } from "@/lib/spotlightColors";
+import { PAGE_COLORS } from "@/lib/pageColors";
 import { Reveal } from "@/components/motion/Reveal";
 import { SpotlightCard } from "@/components/motion/SpotlightCard";
 import { renderCountUpText } from "@/lib/countUpText";
@@ -17,7 +18,12 @@ export function Experience() {
       <div className="bg-grid-pattern pointer-events-none absolute inset-0 -z-10" />
       <div className="mx-auto max-w-5xl px-4 py-16">
         <Reveal>
-          <h1 className="text-sm font-semibold uppercase tracking-widest text-fg-muted">Experience</h1>
+          <h1
+            className="text-sm font-semibold uppercase tracking-widest"
+            style={{ color: PAGE_COLORS.experience }}
+          >
+            Experience
+          </h1>
         </Reveal>
 
         <Reveal delay={50}>

@@ -4,6 +4,7 @@ import { photos } from "@/data/pics";
 import { PhotoGallery } from "@/components/pics/PhotoGallery";
 import { Reveal } from "@/components/motion/Reveal";
 import { site } from "@/data/site";
+import { PAGE_COLORS } from "@/lib/pageColors";
 
 export const metadata: Metadata = {
   title: `Pics — ${site.name}`,
@@ -19,7 +20,9 @@ export default function PicsPage() {
           <Link href="/" className="text-sm text-fg-muted hover:text-fg">
             ← Back home
           </Link>
-          <h1 className="mt-6 text-4xl font-black sm:text-5xl">Pics</h1>
+          <h1 className="mt-6 text-4xl font-black sm:text-5xl" style={{ color: PAGE_COLORS.pics }}>
+            Pics
+          </h1>
           <p className="mt-2 max-w-xl text-fg-muted">
             A collection of frames shot around Santa Cruz and beyond.
           </p>
