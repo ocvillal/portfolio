@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { projects } from "@/data/projects";
 import { ScrollSpotlight } from "@/components/scrolly/ScrollSpotlight";
@@ -9,11 +10,21 @@ import { SPOTLIGHT_COLORS } from "@/lib/spotlightColors";
 import { PAGE_COLORS } from "@/lib/pageColors";
 import { Reveal } from "@/components/motion/Reveal";
 import { SpotlightCard } from "@/components/motion/SpotlightCard";
+import { ScrollRail } from "@/components/nav/ScrollRail";
 
 export function ProjectGrid() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
   return (
     <section className="relative bg-[var(--color-bg)]">
       <div className="bg-grid-pattern pointer-events-none absolute inset-0 -z-10" />
+      <ScrollRail
+        eyebrow="Project"
+        label={projects[activeIndex].name}
+        index={activeIndex}
+        total={projects.length}
+        color={PAGE_COLORS.projects}
+      />
       <div className="mx-auto max-w-5xl px-4 py-16">
         <Reveal>
           <h1
@@ -62,6 +73,7 @@ export function ProjectGrid() {
               </SpotlightCard>
             )}
             renderPanel={(project, index) => <ProjectPanel project={project} index={index} />}
+            onActiveIndexChange={setActiveIndex}
           />
         </div>
       </div>

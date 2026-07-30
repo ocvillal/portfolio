@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { experience } from "@/data/experience";
 import { education } from "@/data/education";
 import { skills } from "@/data/skills";
@@ -11,11 +12,21 @@ import { PAGE_COLORS } from "@/lib/pageColors";
 import { Reveal } from "@/components/motion/Reveal";
 import { SpotlightCard } from "@/components/motion/SpotlightCard";
 import { renderCountUpText } from "@/lib/countUpText";
+import { ScrollRail } from "@/components/nav/ScrollRail";
 
 export function Experience() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
   return (
     <section className="relative bg-[var(--color-bg)]">
       <div className="bg-grid-pattern pointer-events-none absolute inset-0 -z-10" />
+      <ScrollRail
+        eyebrow="Role"
+        label={experience[activeIndex].role}
+        index={activeIndex}
+        total={experience.length}
+        color={PAGE_COLORS.experience}
+      />
       <div className="mx-auto max-w-5xl px-4 py-16">
         <Reveal>
           <h1
@@ -69,6 +80,7 @@ export function Experience() {
               </SpotlightCard>
             )}
             renderPanel={(entry, index) => <ExperiencePanel entry={entry} index={index} />}
+            onActiveIndexChange={setActiveIndex}
           />
         </div>
 

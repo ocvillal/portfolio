@@ -7,6 +7,7 @@ interface ScrollSpotlightProps<T> {
   getKey: (item: T, index: number) => string;
   renderItem: (item: T, index: number, isActive: boolean) => React.ReactNode;
   renderPanel: (item: T, index: number) => React.ReactNode;
+  onActiveIndexChange?: (index: number) => void;
 }
 
 export function ScrollSpotlight<T>({
@@ -14,11 +15,16 @@ export function ScrollSpotlight<T>({
   getKey,
   renderItem,
   renderPanel,
+  onActiveIndexChange,
 }: ScrollSpotlightProps<T>) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [topOffset, setTopOffset] = useState(0);
   const refs = useRef<(HTMLDivElement | null)[]>([]);
   const panelWrapperRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    onActiveIndexChange?.(activeIndex);
+  }, [activeIndex, onActiveIndexChange]);
 
   useEffect(() => {
     setActiveIndex(0);

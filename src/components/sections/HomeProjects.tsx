@@ -14,7 +14,7 @@ const featuredProjects = projects.filter((p) => p.featured);
 
 export function HomeProjects() {
   return (
-    <section className="relative bg-[var(--color-bg)]">
+    <section id="home-projects" className="relative bg-[var(--color-bg)]">
       <div className="bg-grid-pattern pointer-events-none absolute inset-0 -z-10" />
       <div className="mx-auto max-w-5xl px-4 py-16">
         <Reveal>
