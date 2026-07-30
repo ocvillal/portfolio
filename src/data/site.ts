@@ -5,7 +5,7 @@ export const site = {
   bio: [
     "I'm originally from Murrieta, a Southern California city about an hour north of San Diego. I attended UC Santa Cruz for both my grad and undergad, where I graduated with a an M.S. and B.S. in Computer Science with honors.",
     "I was initially drawn to the creative side of coding, especially building terminal games and websites, and have since expanded into designing AI systems for real-world problems. I'm currently doing AI research with Markus Eger. Prior to that, I worked with Alvaro Cardenas, building RL and LLM agents for cyber attack simulation, culminating in the publication “LLMs are ACDs.”",
-    "I'm actively seeking entry-level roles in Product Design, SWE, and FDE. Explore my work in the projects and publications below. If you know of a team or project I might be a good fit for, feel free to reach out.",
+    "I'm actively seeking entry-level roles in Product Design, SWE, and FDE. Explore my work in the projects and publications pages above. If you know of a team or project I might be a good fit for, feel free to reach out.",
   ],
   location: "Santa Cruz, CA",
   email: "octvillal@gmail.com",
