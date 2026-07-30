@@ -24,7 +24,7 @@ export function Hero() {
     <section id="home-intro" className="relative overflow-hidden">
       <div className="bg-grid-pattern pointer-events-none absolute inset-0 -z-10" />
 
-      <div className="mx-auto flex min-h-[calc(100vh-8rem)] max-w-3xl items-center px-4 py-16">
+      <div className="mx-auto flex min-h-[calc(100vh-8rem)] max-w-5xl items-center px-4 py-16">
         <div
           className="w-full overflow-hidden rounded-xl border border-[var(--color-border)] shadow-2xl"
           style={{ background: "var(--terminal-bg)" }}
@@ -54,7 +54,7 @@ export function Hero() {
             </p>
 
             <Reveal delay={ANSWER_DELAY}>
-              <div className="mt-8 flex gap-6 sm:gap-8">
+              <div className="mt-8 flex flex-col items-start gap-5 sm:flex-row sm:gap-8">
                 <TiltCard className="relative h-24 w-24 shrink-0 overflow-hidden rounded-lg border border-[var(--terminal-border)] sm:h-32 sm:w-32">
                   <Image
                     src={withBasePath("/images/avatar.jpg")}
@@ -65,7 +65,7 @@ export function Hero() {
                   />
                 </TiltCard>
 
-                <div className="min-w-0">
+                <div className="min-w-0 max-w-2xl">
                   <h1 className="text-xl font-bold tracking-wide sm:text-2xl">
                     {site.name.toUpperCase()}
                   </h1>
@@ -100,7 +100,7 @@ export function Hero() {
                   {site.terminalIntro.cta.label} →
                 </Link>
                 <span
-                  className="h-4 w-2 animate-pulse"
+                  className="h-4 w-2 animate-terminal-blink"
                   style={{ background: "var(--color-accent-2)" }}
                   aria-hidden="true"
                 />
