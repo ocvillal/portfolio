@@ -2,8 +2,10 @@
 
 import { experience } from "@/data/experience";
 import { education } from "@/data/education";
+import { skills } from "@/data/skills";
 import { ScrollSpotlight } from "@/components/scrolly/ScrollSpotlight";
 import { ExperiencePanel } from "./ExperiencePanel";
+import { SkillRow } from "@/components/skills/SkillRow";
 import { SPOTLIGHT_COLORS } from "@/lib/spotlightColors";
 import { Reveal } from "@/components/motion/Reveal";
 import { SpotlightCard } from "@/components/motion/SpotlightCard";
@@ -11,13 +13,29 @@ import { renderCountUpText } from "@/lib/countUpText";
 
 export function Experience() {
   return (
-    <section id="experience" className="relative bg-[var(--color-bg)]">
+    <section className="relative bg-[var(--color-bg)]">
       <div className="bg-grid-pattern pointer-events-none absolute inset-0 -z-10" />
       <div className="mx-auto max-w-5xl px-4 py-16">
         <Reveal>
-          <h2 className="text-sm font-semibold uppercase tracking-widest text-fg-muted">Experience</h2>
+          <h1 className="text-sm font-semibold uppercase tracking-widest text-fg-muted">Experience</h1>
         </Reveal>
 
+        <Reveal delay={50}>
+          <h2 className="mt-16 text-sm font-semibold uppercase tracking-widest text-fg-muted">Skills</h2>
+        </Reveal>
+        <div className="mt-4">
+          {skills.map((skill, i) => (
+            <Reveal key={skill.label} delay={i * 100}>
+              <SkillRow skill={skill} index={i} />
+            </Reveal>
+          ))}
+        </div>
+
+        <Reveal delay={100}>
+          <h2 className="mt-20 text-sm font-semibold uppercase tracking-widest text-fg-muted">
+            Work experience
+          </h2>
+        </Reveal>
         <div className="mt-8">
           <ScrollSpotlight
             items={experience}
