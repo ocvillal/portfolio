@@ -24,29 +24,38 @@ export function Hero() {
     <section id="home-intro" className="relative overflow-hidden">
       <div className="bg-grid-pattern pointer-events-none absolute inset-0 -z-10" />
 
-      <div className="mx-auto flex min-h-[calc(100vh-8rem)] max-w-2xl items-center px-4 py-16">
+      <div className="mx-auto flex min-h-[calc(100vh-8rem)] max-w-3xl items-center px-4 py-16">
         <div
           className="w-full overflow-hidden rounded-xl border border-[var(--color-border)] shadow-2xl"
-          style={{ background: "#0d0d0d" }}
+          style={{ background: "var(--terminal-bg)" }}
         >
-          <div className="flex items-center gap-2 px-4 py-3" style={{ background: "#1a1a1a" }}>
-            <span className="h-3 w-3 rounded-full" style={{ background: "#ff5f56" }} />
-            <span className="h-3 w-3 rounded-full" style={{ background: "#ffbd2e" }} />
-            <span className="h-3 w-3 rounded-full" style={{ background: "#27c93f" }} />
-            <span className="ml-2 font-mono text-xs text-white/40">
+          <div
+            className="flex items-center gap-2 px-5 py-4"
+            style={{ background: "var(--terminal-bg-secondary)" }}
+          >
+            <span className="h-3.5 w-3.5 rounded-full" style={{ background: "#ff5f56" }} />
+            <span className="h-3.5 w-3.5 rounded-full" style={{ background: "#ffbd2e" }} />
+            <span className="h-3.5 w-3.5 rounded-full" style={{ background: "#27c93f" }} />
+            <span
+              className="ml-2 font-mono text-sm"
+              style={{ color: "var(--terminal-fg-muted)" }}
+            >
               {site.name.toLowerCase().replace(/\s+/g, ".")} — query
             </span>
           </div>
 
-          <div className="p-6 font-mono text-sm text-white/90 sm:p-8 sm:text-base">
+          <div
+            className="p-8 font-mono text-base sm:p-10 sm:text-lg"
+            style={{ color: "var(--terminal-fg)" }}
+          >
             <p>
               <span style={{ color: "var(--color-accent-2)" }}>{"> "}</span>
               <TypewriterText text={site.terminalIntro.query} speedMs={TYPE_SPEED_MS} />
             </p>
 
             <Reveal delay={ANSWER_DELAY}>
-              <div className="mt-8 flex gap-5 sm:gap-6">
-                <TiltCard className="relative h-20 w-20 shrink-0 overflow-hidden rounded-lg border border-white/10 sm:h-28 sm:w-28">
+              <div className="mt-8 flex gap-6 sm:gap-8">
+                <TiltCard className="relative h-24 w-24 shrink-0 overflow-hidden rounded-lg border border-[var(--terminal-border)] sm:h-32 sm:w-32">
                   <Image
                     src={withBasePath("/images/avatar.jpg")}
                     alt={site.name}
@@ -57,13 +66,18 @@ export function Hero() {
                 </TiltCard>
 
                 <div className="min-w-0">
-                  <h1 className="text-lg font-bold tracking-wide text-white sm:text-xl">
+                  <h1 className="text-xl font-bold tracking-wide sm:text-2xl">
                     {site.name.toUpperCase()}
                   </h1>
-                  <p className="mt-1 text-white/50">{site.terminalIntro.roleTags.join(" / ")}</p>
+                  <p className="mt-1" style={{ color: "var(--terminal-fg-muted)" }}>
+                    {site.terminalIntro.roleTags.join(" / ")}
+                  </p>
 
-                  <p className="mt-4 text-white/70">{site.terminalIntro.currentLine}</p>
-                  <p className="text-white/70">{site.terminalIntro.quirkyLine}</p>
+                  <div className="mt-4 space-y-1.5" style={{ color: "var(--terminal-fg-muted)" }}>
+                    {site.terminalIntro.lines.map((line) => (
+                      <p key={line}>{line}</p>
+                    ))}
+                  </div>
 
                   <p className="mt-4" style={{ color: "var(--color-accent-2)" }}>
                     {`// ${site.terminalIntro.availabilityLine}`}
@@ -73,8 +87,11 @@ export function Hero() {
             </Reveal>
 
             <Reveal delay={ANSWER_DELAY + 200}>
-              <div className="mt-8 flex flex-wrap items-center gap-4 border-t border-white/10 pt-6">
-                <span className="text-white/40">_</span>
+              <div
+                className="mt-8 flex flex-wrap items-center gap-4 border-t pt-6"
+                style={{ borderColor: "var(--terminal-border)" }}
+              >
+                <span style={{ color: "var(--terminal-fg-muted)" }}>_</span>
                 <Link
                   href={site.terminalIntro.cta.href}
                   className="font-semibold underline decoration-dashed underline-offset-4"
@@ -97,9 +114,10 @@ export function Hero() {
                         rel={href.startsWith("http") || href.endsWith(".pdf") ? "noreferrer" : undefined}
                         aria-label={label}
                         data-cursor-hover
-                        className="flex h-8 w-8 items-center justify-center rounded-md border border-white/10 text-white/60 transition-colors hover:text-white"
+                        className="flex h-9 w-9 items-center justify-center rounded-md border transition-colors"
+                        style={{ borderColor: "var(--terminal-border)", color: "var(--terminal-fg-muted)" }}
                       >
-                        <Icon size={15} />
+                        <Icon size={16} />
                       </a>
                     </Magnetic>
                   ))}
@@ -109,8 +127,12 @@ export function Hero() {
           </div>
 
           <div
-            className="border-t border-white/10 px-4 py-2 text-center font-mono text-[10px] text-white/30"
-            style={{ background: "#1a1a1a" }}
+            className="border-t px-4 py-2 text-center font-mono text-xs"
+            style={{
+              background: "var(--terminal-bg-secondary)",
+              borderColor: "var(--terminal-border)",
+              color: "var(--terminal-fg-muted)",
+            }}
           >
             ■ {site.name.toUpperCase().replace(/\s+/g, ".")} ■ v1.0 ■
           </div>

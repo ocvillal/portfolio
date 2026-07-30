@@ -16,10 +16,14 @@ export const site = {
   resumeHref: "/documents/Main_resume_August.pdf",
   terminalIntro: {
     query: "who is octavio villalobos?",
-    roleTags: ["Computer Scientist", "AI Engineer", "Terminal Kid"],
-    currentLine: "Currently doing AI research with Markus Eger.",
-    quirkyLine:
+    roleTags: ["Computer Scientist", "AI Engineer Intern", "Researcher"],
+    lines: [
+      "Builds AI systems, from research to production.",
+      "AI Engineer Intern @ Silicon Valley Certification Hub. Research Project Lead @ Sloth Lab, UC Santa Cruz.",
+      "M.S. & B.S. in Computer Science — UC Santa Cruz, with honors.",
+      "Published: “LLMs are Autonomous Cyber Defenders” — IEEE CAI 2025.",
       "Shoots on a 2013 Fujifilm X100S. Long-term plan: shoot only film. Short-term plan: organize the archive.",
+    ],
     availabilityLine: "Actively seeking entry-level roles in Product Design, SWE, and FDE.",
     cta: { label: "enter my work", href: "/projects/" },
   },

@@ -19,6 +19,12 @@
   --color-accent-3: #2dd4bf;
   --color-accent-4: #fb7185;
   --color-accent-5: #ffbe0b;
+
+  --terminal-bg: #0d0d0d;
+  --terminal-bg-secondary: #1a1a1a;
+  --terminal-fg: rgba(255, 255, 255, 0.9);
+  --terminal-fg-muted: rgba(255, 255, 255, 0.5);
+  --terminal-border: rgba(255, 255, 255, 0.1);
 }
 
 [data-theme="light"] {
@@ -33,6 +39,12 @@
   --color-accent-3: #2dd4bf;
   --color-accent-4: #fb7185;
   --color-accent-5: #ffbe0b;
+
+  --terminal-bg: #f4f4f1;
+  --terminal-bg-secondary: #e8e8e3;
+  --terminal-fg: rgba(17, 17, 20, 0.92);
+  --terminal-fg-muted: rgba(17, 17, 20, 0.55);
+  --terminal-border: rgba(17, 17, 20, 0.12);
 }
 
 @theme inline {
