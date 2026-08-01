@@ -5,25 +5,27 @@ import { site } from "@/data/site";
 
 function formatUptime(ms: number): string {
   const totalSeconds = Math.floor(ms / 1000);
-  const h = String(Math.floor(totalSeconds / 3600)).padStart(2, "0");
+  const days = Math.floor(totalSeconds / 86400);
+  const h = String(Math.floor((totalSeconds % 86400) / 3600)).padStart(2, "0");
   const m = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, "0");
   const s = String(totalSeconds % 60).padStart(2, "0");
-  return `${h}:${m}:${s}`;
+  return days > 0 ? `${days}d ${h}:${m}:${s}` : `${h}:${m}:${s}`;
 }
 
 const BUILD_TIME = process.env.NEXT_PUBLIC_BUILD_TIME;
 const buildLabel = BUILD_TIME ? BUILD_TIME.slice(0, 10) : "dev";
+const buildTimestampMs = BUILD_TIME ? new Date(BUILD_TIME).getTime() : Date.now();
 
 export function TerminalFooter() {
   const [now, setNow] = useState<Date | null>(null);
   const [uptimeMs, setUptimeMs] = useState(0);
 
   useEffect(() => {
-    const start = Date.now();
     setNow(new Date());
+    setUptimeMs(Date.now() - buildTimestampMs);
     const interval = setInterval(() => {
       setNow(new Date());
-      setUptimeMs(Date.now() - start);
+      setUptimeMs(Date.now() - buildTimestampMs);
     }, 1000);
     return () => clearInterval(interval);
   }, []);
