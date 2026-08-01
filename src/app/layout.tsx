@@ -4,6 +4,7 @@ import { ThemeScript } from "@/components/theme/ThemeScript";
 import { PillNav } from "@/components/nav/PillNav";
 import { Footer } from "@/components/footer/Footer";
 import { CustomCursor } from "@/components/cursor/CustomCursor";
+import { CommandPalette } from "@/components/palette/CommandPalette";
 import { ScrollProgressBar } from "@/components/motion/ScrollProgressBar";
 import { site } from "@/data/site";
 import "./globals.css";
@@ -40,6 +41,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-[var(--color-bg)] text-[var(--color-fg)]">
         <ScrollProgressBar />
         <CustomCursor />
+        <CommandPalette />
         <PillNav />
         <main className="flex-1">{children}</main>
         <Footer />
