@@ -8,6 +8,7 @@ import { TypewriterText } from "@/components/motion/TypewriterText";
 import { Reveal } from "@/components/motion/Reveal";
 import { TiltCard } from "@/components/motion/TiltCard";
 import { Magnetic } from "@/components/motion/Magnetic";
+import { TerminalFooter } from "@/components/hero/TerminalFooter";
 
 const CONTACT_LINKS = [
   { label: "LinkedIn", href: site.socials.linkedin, icon: LinkedinIcon },
@@ -126,16 +127,7 @@ export function Hero() {
             </Reveal>
           </div>
 
-          <div
-            className="border-t px-4 py-2 text-center font-mono text-xs"
-            style={{
-              background: "var(--terminal-bg-secondary)",
-              borderColor: "var(--terminal-border)",
-              color: "var(--terminal-fg-muted)",
-            }}
-          >
-            ■ {site.name.toUpperCase().replace(/\s+/g, ".")} ■ v1.0 ■
-          </div>
+          <TerminalFooter />
         </div>
       </div>
     </section>

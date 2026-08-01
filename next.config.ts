@@ -9,6 +9,9 @@ const nextConfig: NextConfig = {
   // otherwise client-side <Link> navigation (which normalizes to a trailing
   // slash) hits an empty directory with no index.html and 404s.
   trailingSlash: true,
+  env: {
+    NEXT_PUBLIC_BUILD_TIME: new Date().toISOString(),
+  },
 };
 
 export default nextConfig;
