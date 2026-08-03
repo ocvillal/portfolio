@@ -3,10 +3,9 @@
 import { useState } from "react";
 import { experience } from "@/data/experience";
 import { education } from "@/data/education";
-import { skills } from "@/data/skills";
 import { ScrollSpotlight } from "@/components/scrolly/ScrollSpotlight";
 import { ExperiencePanel } from "./ExperiencePanel";
-import { SkillRow } from "@/components/skills/SkillRow";
+import { Skills } from "./Skills";
 import { SPOTLIGHT_COLORS } from "@/lib/spotlightColors";
 import { PAGE_COLORS } from "@/lib/pageColors";
 import { Reveal } from "@/components/motion/Reveal";
@@ -37,16 +36,15 @@ export function Experience() {
           </h1>
         </Reveal>
 
-        <Reveal delay={50}>
-          <h2 className="mt-16 text-sm font-semibold uppercase tracking-widest text-fg-muted">Skills</h2>
-        </Reveal>
-        <div className="mt-4">
-          {skills.map((skill, i) => (
-            <Reveal key={skill.label} delay={i * 100}>
-              <SkillRow skill={skill} index={i} />
+        <Skills
+          heading={
+            <Reveal delay={50}>
+              <h2 className="mt-16 text-sm font-semibold uppercase tracking-widest text-fg-muted">
+                Skills
+              </h2>
             </Reveal>
-          ))}
-        </div>
+          }
+        />
 
         <Reveal delay={100}>
           <h2 className="mt-20 text-sm font-semibold uppercase tracking-widest text-fg-muted">

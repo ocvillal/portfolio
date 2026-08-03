@@ -13,7 +13,7 @@ export const skills: SkillCategory[] = [
   {
     label: "Front-end",
     description: "Building interfaces that make complex systems feel simple.",
-    tags: ["React.js", "React Native", "Tailwind CSS", "HTML5"],
+    tags: ["React.js", "Next.js", "React Native", "Flutter", "Tailwind CSS", "HTML5"],
   },
   {
     label: "Backend",
@@ -39,6 +39,10 @@ export const skills: SkillCategory[] = [
       "Weights & Biases",
       "Pandas",
       "Matplotlib",
+      "Claude Code",
+      "RAG",
+      "Prompt Engineering",
+      "AI Workflow Automation",
     ],
   },
   {

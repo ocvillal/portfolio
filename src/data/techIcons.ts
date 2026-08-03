@@ -8,6 +8,8 @@ import {
   SiHtml5,
   SiReact,
   SiExpo,
+  SiNextdotjs,
+  SiFlutter,
   SiTailwindcss,
   SiFastapi,
   SiExpress,
@@ -42,6 +44,8 @@ import {
   Boxes,
   ChartLine,
   Workflow,
+  Sparkles,
+  Bot,
 } from "lucide-react";
 
 type TagIcon = ComponentType<{ size?: number; color?: string }>;
@@ -61,6 +65,8 @@ export const techIcons: Record<string, { Icon: TagIcon; color: string }> = {
   // Front-end
   "React.js": { Icon: SiReact, color: "#61DAFB" },
   "React Native": { Icon: SiExpo, color: "var(--color-fg)" },
+  "Next.js": { Icon: SiNextdotjs, color: "var(--color-fg)" },
+  Flutter: { Icon: SiFlutter, color: "#02569B" },
   "Tailwind CSS": { Icon: SiTailwindcss, color: "#06B6D4" },
   HTML5: { Icon: SiHtml5, color: "#E34F26" },
 
@@ -89,6 +95,10 @@ export const techIcons: Record<string, { Icon: TagIcon; color: string }> = {
   "Weights & Biases": { Icon: SiWeightsandbiases, color: "#FFBE00" },
   Pandas: { Icon: SiPandas, color: "var(--color-fg)" },
   Matplotlib: { Icon: ChartLine, color: "var(--color-fg)" },
+  "Claude Code": { Icon: SiClaude, color: "#D97757" },
+  RAG: { Icon: Boxes, color: "var(--color-fg)" },
+  "Prompt Engineering": { Icon: Sparkles, color: "var(--color-fg)" },
+  "AI Workflow Automation": { Icon: Bot, color: "var(--color-fg)" },
 
   // Cloud
   AWS: { Icon: FaAws, color: "#FF9900" },
