@@ -9,6 +9,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { TiltCard } from "@/components/motion/TiltCard";
 import { Magnetic } from "@/components/motion/Magnetic";
 import { TerminalFooter } from "@/components/hero/TerminalFooter";
+import { LocationCard } from "@/components/palette/LocationCard";
 
 const CONTACT_LINKS = [
   { label: "LinkedIn", href: site.socials.linkedin, icon: LinkedinIcon },
@@ -83,6 +84,10 @@ export function Hero() {
                   <p className="mt-4" style={{ color: "var(--color-accent-2)" }}>
                     {`// ${site.terminalIntro.availabilityLine}`}
                   </p>
+
+                  <div className="mt-4">
+                    <LocationCard />
+                  </div>
                 </div>
               </div>
             </Reveal>
