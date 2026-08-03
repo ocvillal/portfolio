@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import { site } from "@/data/site";
 import { withBasePath } from "@/lib/paths";
+import { LocationCard } from "@/components/palette/LocationCard";
 
 const ROUTES: Record<string, string> = {
   "~": "/",
@@ -17,13 +18,14 @@ const ROUTES: Record<string, string> = {
   contact: "/contact",
 };
 
-type LogEntry = { input: string; output: string[] };
+type LogEntry = { input: string; output: string[]; render?: ReactNode };
 
 const HELP_LINES = [
   "cd <page>     — navigate (~, about, projects, publications, experience, pics, contact)",
   "ls            — list pages",
   "cat resume    — open my résumé",
   "whoami        — a one-line summary",
+  "whereami      — where I'm currently based",
   "open github   — open my GitHub profile",
   "open linkedin — open my LinkedIn profile",
   "open email    — compose an email",
@@ -103,6 +105,11 @@ export function CommandPalette() {
 
     if (cmd === "whoami") {
       setLog((prev) => [...prev, { input: command, output: [site.tagline] }]);
+      return;
+    }
+
+    if (cmd === "whereami") {
+      setLog((prev) => [...prev, { input: command, output: [], render: <LocationCard /> }]);
       return;
     }
 
@@ -190,6 +197,7 @@ export function CommandPalette() {
                   {line}
                 </p>
               ))}
+              {entry.render && <div className="mt-1">{entry.render}</div>}
             </div>
           ))}
         </div>

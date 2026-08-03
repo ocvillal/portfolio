@@ -7,7 +7,7 @@ export const site = {
     "I was initially drawn to the creative side of coding, especially building terminal games and websites, and have since expanded into designing AI systems for real-world problems. I'm currently doing AI research with Markus Eger. Prior to that, I worked with Alvaro Cardenas, building RL and LLM agents for cyber attack simulation, culminating in the publication “LLMs are ACDs.”",
     "I'm actively seeking entry-level roles in Product Design, SWE, and FDE. Explore my work in the projects and publications pages above. If you know of a team or project I might be a good fit for, feel free to reach out.",
   ],
-  location: "Santa Cruz, CA",
+  location: "Murrieta, CA",
   email: "octvillal@gmail.com",
   socials: {
     github: "https://github.com/ocvillal",
