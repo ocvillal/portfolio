@@ -68,14 +68,24 @@ export function Hero() {
                 </TiltCard>
 
                 <div className="min-w-0 max-w-2xl">
-                  <h1 className="text-xl font-bold tracking-wide sm:text-2xl">
-                    {site.name.toUpperCase()}
-                  </h1>
-                  <p className="mt-1" style={{ color: "var(--terminal-fg-muted)" }}>
-                    {site.terminalIntro.roleTags.join(" / ")}
-                  </p>
+                  <div className="flex flex-wrap items-start justify-between gap-4">
+                    <div className="min-w-[10rem] flex-1">
+                      <h1 className="text-xl font-bold tracking-wide sm:text-2xl">
+                        {site.name.toUpperCase()}
+                      </h1>
+                      <p className="mt-1" style={{ color: "var(--terminal-fg-muted)" }}>
+                        {site.terminalIntro.roleTags.join(" / ")}
+                      </p>
+                    </div>
+                    <div className="shrink-0">
+                      <LocationCard compact />
+                    </div>
+                  </div>
 
-                  <div className="mt-4 space-y-1.5" style={{ color: "var(--terminal-fg-muted)" }}>
+                  <div
+                    className="mt-4 space-y-1.5 text-sm sm:text-base"
+                    style={{ color: "var(--terminal-fg-muted)" }}
+                  >
                     {site.terminalIntro.lines.map((line) => (
                       <p key={line}>{line}</p>
                     ))}
@@ -84,10 +94,6 @@ export function Hero() {
                   <p className="mt-4" style={{ color: "var(--color-accent-2)" }}>
                     {`// ${site.terminalIntro.availabilityLine}`}
                   </p>
-
-                  <div className="mt-4">
-                    <LocationCard />
-                  </div>
                 </div>
               </div>
             </Reveal>
