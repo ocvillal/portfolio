@@ -83,21 +83,6 @@ body {
   animation: terminal-blink 1s steps(1) infinite;
 }
 
-@keyframes web-burst {
-  0% {
-    opacity: 1;
-    transform: scale(0.3);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1.4);
-  }
-}
-
-.animate-web-burst {
-  animation: web-burst 450ms ease-out forwards;
-}
-
 .bg-grid-pattern {
   background-image:
     linear-gradient(to right, var(--color-border) 1px, transparent 1px),
