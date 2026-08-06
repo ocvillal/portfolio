@@ -154,6 +154,21 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    slug: "portfolio-v1",
+    name: "Portfolio V1",
+    subtitle: "Game Boy Advance-styled personal site",
+    description:
+      "The first version of my personal site — a single-page portfolio styled after a Game Boy Advance, complete with a D-pad and buttons for navigating between About, Projects, Publications, Experience, and Contact.",
+    body: "Built with vanilla HTML, CSS, and JavaScript and deployed on GitHub Pages, with no framework or build step.",
+    tech: ["HTML", "CSS", "JavaScript", "GitHub Pages"],
+    coverImage: "/images/projects/portfolio-v1/cover.webp",
+    images: [{ src: "/images/projects/portfolio-v1/cover.webp", alt: "Portfolio V1 project preview" }],
+    links: [
+      { label: "Repo", href: "https://github.com/ocvillal/ocvillal.github.io", kind: "repo" },
+      { label: "Demo", href: "https://ocvillal.github.io", kind: "demo" },
+    ],
+  },
 ];
 
 export function getProject(slug: string): Project | undefined {
