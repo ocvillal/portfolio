@@ -6,7 +6,7 @@ export const projects: Project[] = [
     name: "Selma",
     subtitle: "Framework for socially realistic NPCs",
     description:
-      "A framework for creating realistic and socially aware RL NPC agents in video games. The accompanying paper, “Selma: Simulating Personality-Driven Discussion Among Agents,” has been submitted to AIIDE 2026.",
+      "A framework for creating realistic and socially aware RL NPC agents in video games. The accompanying paper, “Selma: Simulating Personality-Driven Discussion Among Agents,” has been accepted to AIIDE 2026.",
     body: "Each NPC is given a distinct personality profile that shapes how it argues, concedes, or steers a conversation, with an LLM driving dialogue generation and an RL policy learning which social strategies lead to believable, personality-consistent outcomes over repeated discussions.",
     tech: ["Python", "LLM", "RL"],
     coverImage: "/images/projects/selma/cover.webp",
