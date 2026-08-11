@@ -27,6 +27,7 @@ export function ScrollSpotlight<T>({
   }, [activeIndex, onActiveIndexChange]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- resets scroll-derived active index when the item list changes, before the observer re-attaches
     setActiveIndex(0);
 
     const observer = new IntersectionObserver(

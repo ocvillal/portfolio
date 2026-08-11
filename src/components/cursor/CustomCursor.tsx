@@ -10,6 +10,7 @@ export function CustomCursor() {
   useEffect(() => {
     if (!window.matchMedia("(pointer: fine)").matches) return;
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- fine-pointer support is only known client-side; renders inactive first to avoid an SSR hydration mismatch
     setActive(true);
     const previousCursor = document.body.style.cursor;
     document.body.style.cursor = "none";

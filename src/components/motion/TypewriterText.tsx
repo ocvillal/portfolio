@@ -22,6 +22,7 @@ export function TypewriterText({
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- reduced-motion preference is only known client-side; renders empty first to avoid an SSR hydration mismatch
       setCount(text.length);
       setDone(true);
       return;

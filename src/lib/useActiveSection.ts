@@ -11,6 +11,7 @@ export function useActiveSection(ids: string[]) {
       .filter((el): el is HTMLElement => el !== null);
 
     if (elements.length === 0) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- DOM lookup only resolves client-side; no matching sections found
       setActiveIndex(-1);
       return;
     }

@@ -21,6 +21,7 @@ export function TerminalFooter() {
   const [uptimeMs, setUptimeMs] = useState(0);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- current time is only known client-side; renders null first to avoid an SSR hydration mismatch
     setNow(new Date());
     setUptimeMs(Date.now() - buildTimestampMs);
     const interval = setInterval(() => {

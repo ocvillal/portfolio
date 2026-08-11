@@ -12,6 +12,7 @@ export function CountUp({ value, durationMs = 1000 }: { value: number; durationM
     if (!el) return;
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- reduced-motion preference is only known client-side; renders 0 first to avoid an SSR hydration mismatch
       setDisplay(value);
       return;
     }
