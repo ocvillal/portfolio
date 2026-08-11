@@ -7,6 +7,7 @@ export const projects: Project[] = [
     subtitle: "Framework for socially realistic NPCs",
     description:
       "A framework for creating realistic and socially aware RL NPC agents in video games. The accompanying paper, “Selma: Simulating Personality-Driven Discussion Among Agents,” has been submitted to AIIDE 2026.",
+    body: "Each NPC is given a distinct personality profile that shapes how it argues, concedes, or steers a conversation, with an LLM driving dialogue generation and an RL policy learning which social strategies lead to believable, personality-consistent outcomes over repeated discussions.",
     tech: ["Python", "LLM", "RL"],
     coverImage: "/images/projects/selma/cover.webp",
     images: [{ src: "/images/projects/selma/cover.webp", alt: "Selma project preview" }],
@@ -45,6 +46,7 @@ export const projects: Project[] = [
     subtitle: "Automatic IPO deck generator",
     description:
       "InsightDeck is an AI tool that automatically generates IPO presentations without human intervention — gathering, processing, and parsing information into a visually appealing slide deck while grounding the information to ensure accuracy.",
+    body: "A LangChain-orchestrated RAG pipeline indexes source filings and company data in a vector database, then chains together research, drafting, and formatting stages so every generated slide stays grounded in retrieved evidence rather than the model's own assumptions.",
     tech: ["Python", "LangChain", "RAG", "LLMs", "Parsing", "Orchestration", "Vector DB"],
     coverImage: "/images/projects/insight-deck/cover.webp",
     images: [{ src: "/images/projects/insight-deck/cover.webp", alt: "Insight Deck project preview" }],
@@ -139,6 +141,7 @@ export const projects: Project[] = [
     subtitle: "Map-driven birdwatching platform",
     description:
       "An interactive bird-watching platform inspired by eBird.org, built to support checklist submissions, personalized statistics, and regional birding insights — all wrapped in a dynamic, map-driven experience.",
+    body: "A Flask API backed by a SQL database stores each user's checklists and sightings, while the Google Maps API drives an interactive map for logging and exploring sightings by location, feeding the personalized stats and regional insights shown on each profile.",
     tech: ["JavaScript", "HTML", "SQL", "Python", "Flask", "Google Maps API"],
     coverImage: "/images/projects/bird-tracker/cover.webp",
     images: [
