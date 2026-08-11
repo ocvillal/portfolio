@@ -1,11 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { MapPin, Moon, Sun } from "lucide-react";
 import { site } from "@/data/site";
+import { withBasePath } from "@/lib/paths";
+import "maplibre-gl/dist/maplibre-gl.css";
 
 const TIMEZONE = "America/Los_Angeles";
 const CITY_LABEL = site.location.split(",")[0].toUpperCase();
+const MAP_STYLES = {
+  dark: "https://tiles.openfreemap.org/styles/dark",
+  light: "https://tiles.openfreemap.org/styles/positron",
+};
 
 function getClockParts(date: Date) {
   const timeString = date.toLocaleTimeString("en-US", { timeZone: TIMEZONE, hour12: false });
@@ -14,6 +20,76 @@ function getClockParts(date: Date) {
   );
   const isNight = hour < 6 || hour >= 19;
   return { timeString, isNight };
+}
+
+function readTheme(): "dark" | "light" {
+  return document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
+}
+
+function LocationMap() {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const mapRef = useRef<import("maplibre-gl").Map | null>(null);
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
+
+  useEffect(() => {
+    const root = document.documentElement;
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- theme attribute is only known client-side
+    setTheme(readTheme());
+
+    const observer = new MutationObserver(() => setTheme(readTheme()));
+    observer.observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+    return () => observer.disconnect();
+  }, []);
+
+  // Creates the map once, using whatever theme is on the page right now — independent of
+  // the `theme` state above, which may not have synced from its SSR-safe default yet.
+  useEffect(() => {
+    if (!containerRef.current) return;
+    let cancelled = false;
+
+    import("maplibre-gl").then(({ Map: MapLibreMap, Marker, setWorkerUrl }) => {
+      if (cancelled || !containerRef.current) return;
+
+      // Next's bundler (Turbopack in dev) doesn't reliably resolve MapLibre's internal
+      // `new Worker(new URL(...))` call, silently breaking the worker that parses vector
+      // tiles — the map loads but nothing ever renders beyond the flat background layer.
+      // Pointing it at the plain static files below sidesteps that entirely.
+      setWorkerUrl(withBasePath("/maplibre/maplibre-gl-worker.mjs"));
+
+      const map = new MapLibreMap({
+        container: containerRef.current,
+        style: MAP_STYLES[readTheme()],
+        center: [site.coordinates.lng, site.coordinates.lat],
+        zoom: 10.5,
+        // MapLibre's built-in attribution widget doesn't collapse to its compact "i" form at
+        // this card's size — it renders expanded and covers the whole map. Attribution is
+        // handled separately below with a small static credit link instead.
+        attributionControl: false,
+        cooperativeGestures: true,
+      });
+      map.dragRotate.disable();
+      map.touchZoomRotate.disableRotation();
+
+      new Marker({ color: "#ef4444" })
+        .setLngLat([site.coordinates.lng, site.coordinates.lat])
+        .addTo(map);
+
+      mapRef.current = map;
+    });
+
+    return () => {
+      cancelled = true;
+      mapRef.current?.remove();
+      mapRef.current = null;
+    };
+  }, []);
+
+  // Swaps the live map's style whenever the site theme toggles after mount.
+  useEffect(() => {
+    mapRef.current?.setStyle(MAP_STYLES[theme]);
+  }, [theme]);
+
+  return <div ref={containerRef} className="absolute inset-0 h-full w-full" />;
 }
 
 export function LocationCard({ compact = false }: { compact?: boolean }) {
@@ -46,22 +122,25 @@ export function LocationCard({ compact = false }: { compact?: boolean }) {
 
       <div
         className={compact ? "relative mt-1.5 h-16 overflow-hidden rounded-lg sm:h-20" : "relative mt-2 h-28 overflow-hidden rounded-lg"}
-        style={{ background: "#0a0a0a" }}
+        style={{ background: "var(--terminal-bg)" }}
       >
-        <svg className="absolute inset-0 h-full w-full opacity-25" viewBox="0 0 200 110" fill="none">
-          <path d="M0 15 Q 40 6, 70 22 T 140 18 T 200 30" stroke="var(--terminal-fg-muted)" strokeWidth="0.6" />
-          <path d="M0 50 Q 50 42, 90 54 T 200 46" stroke="var(--terminal-fg-muted)" strokeWidth="0.6" />
-          <path d="M0 85 Q 60 76, 110 88 T 200 80" stroke="var(--terminal-fg-muted)" strokeWidth="0.6" />
-          <path d="M20 0 Q 28 55, 15 110" stroke="var(--terminal-fg-muted)" strokeWidth="0.6" />
-          <path d="M160 0 Q 150 50, 175 110" stroke="var(--terminal-fg-muted)" strokeWidth="0.6" />
-        </svg>
+        <LocationMap />
+        <a
+          href="https://www.openstreetmap.org/copyright"
+          target="_blank"
+          rel="noreferrer"
+          className="absolute bottom-0.5 right-1 z-10 text-[8px] leading-none opacity-60 hover:opacity-100"
+          style={{ color: "var(--terminal-fg-muted)" }}
+        >
+          © OpenStreetMap
+        </a>
         <span
           className={
             compact
-              ? "absolute inset-0 flex items-center justify-center text-sm font-bold tracking-widest opacity-30"
-              : "absolute inset-0 flex items-center justify-center text-xl font-bold tracking-widest opacity-30"
+              ? "pointer-events-none absolute inset-0 flex items-center justify-center text-sm font-bold tracking-widest opacity-40"
+              : "pointer-events-none absolute inset-0 flex items-center justify-center text-xl font-bold tracking-widest opacity-40"
           }
-          style={{ color: "var(--terminal-fg)" }}
+          style={{ color: "var(--terminal-fg)", textShadow: "0 1px 6px rgba(0,0,0,0.6)" }}
         >
           {CITY_LABEL}
         </span>

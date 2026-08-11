@@ -8,6 +8,7 @@ export const site = {
     "I'm actively seeking entry-level roles in Product Design, SWE, and FDE. Explore my work in the projects and publications pages above. If you know of a team or project I might be a good fit for, feel free to reach out.",
   ],
   location: "Murrieta, CA",
+  coordinates: { lat: 33.5539, lng: -117.2139 },
   email: "octvillal@gmail.com",
   socials: {
     github: "https://github.com/ocvillal",
