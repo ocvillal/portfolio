@@ -20,7 +20,7 @@ export const projects: Project[] = [
     subtitle: "Phrase-based decoder + Marian NMT",
     description:
       "A French-to-English machine translation system that combines a custom phrase-based decoder with a neural machine translation model trained using Marian NMT.",
-    body: "Integrates IBM Model 1 word alignments, phrase table extraction, and an n-gram language model into a stack-based beam search decoder, and evaluates translation quality using BLEU and chrF metrics.",
+    body: "Integrates IBM Model 1 word alignments, phrase table extraction, and an n-gram language model into a stack-based beam search decoder, and evaluates translation quality using BLEU and chrF metrics. The phrase-based decoder and the Marian NMT model can be run independently or side by side, making it possible to compare classical statistical MT against pure neural translation on the same test sentences.",
     tech: [
       "Python",
       "Marian NMT",
@@ -64,7 +64,7 @@ export const projects: Project[] = [
     subtitle: "Neural network Formula One predictor",
     description:
       "A predictive model for Formula 1 finishing positions, motivated by how difficult top-10 race outcomes are to forecast due to interacting factors like driver skill, car performance, track characteristics, weather, strategy, and unpredictable incidents.",
-    body: "Matches the accuracy of top betting sites like Underdog.",
+    body: "Matches the accuracy of top betting sites like Underdog. Trained on historical race, qualifying, and weather data, the PyTorch model predicts a full finishing order rather than just a winner, with Pandas and Scikit-Learn used to engineer and evaluate the features driving each prediction.",
     tech: ["Neural Networks", "PyTorch", "Pandas", "Matplotlib", "Scikit-Learn"],
     coverImage: "/images/projects/formula-forecast/cover.webp",
     images: [{ src: "/images/projects/formula-forecast/cover.webp", alt: "Formula Forecast project preview" }],
@@ -80,7 +80,7 @@ export const projects: Project[] = [
     subtitle: "A music diary app — Letterboxd, but for music",
     description:
       "A music diary app to log albums, rate songs, and share with friends — browse charts and personalized recommendations, search albums and artists, and follow friends' activity feeds, all behind Supabase-backed accounts.",
-    body: "Built with Expo SDK 54, React Native 0.81.5, and React 19, backed by Supabase for auth and data. Uses the Deezer and Spotify APIs for search, artist discovery, and metadata, and the Last.fm API for charts and recommendations.",
+    body: "Built with Expo SDK 54, React Native 0.81.5, and React 19, backed by Supabase for auth and data. Uses the Deezer and Spotify APIs for search, artist discovery, and metadata, and the Last.fm API for charts and recommendations. Ratings and logs roll up into a personal taste profile, and the friend activity feed keeps recommendations anchored in what people you follow are actually listening to.",
     tech: ["React Native", "Expo", "TypeScript", "Supabase", "Spotify API", "Deezer API", "Last.fm API"],
     coverImage: "/images/projects/spindl/cover.webp",
     images: [{ src: "/images/projects/spindl/cover.webp", alt: "Spindl project preview" }],
@@ -100,7 +100,7 @@ export const projects: Project[] = [
     subtitle: "IEEE CAI 2025 · Autonomous Cyber Defense",
     description:
       "We show that large language models can act as autonomous cyber defenders (ACDs), detecting and responding to cyber attacks through reinforcement learning.",
-    body: "Published at the IEEE Conference on Artificial Intelligence 2025. Collaborative work with Alvaro Cardenas.",
+    body: "Published at the IEEE Conference on Artificial Intelligence 2025. Collaborative work with Alvaro Cardenas. Evaluated in the CAGE Challenge cyber range, the LLM-driven defender reasons over network state encoded with a GNN and chooses containment and remediation actions as a simulated attack unfolds.",
     tech: ["LLMs", "Cage Challenge", "CybORG", "GNN", "RL Agents"],
     coverImage: "/images/projects/llms-are-acds/cover.webp",
     images: [
@@ -122,7 +122,7 @@ export const projects: Project[] = [
     subtitle: "AI-powered layout generation for game environments",
     description:
       "A tool that automatically generates stylistic and functional interior room layouts for games using user-selected 3D furniture and decoration models.",
-    body: "Uses genetic algorithms, pathfinding, and planning techniques to evolve unique room designs while ensuring navigable and coherent layouts.",
+    body: "Uses genetic algorithms, pathfinding, and planning techniques to evolve unique room designs while ensuring navigable and coherent layouts. Candidate layouts are scored on criteria like walkability and functional zoning, and each generation is checked with pathfinding before it's accepted, all rendered and tested inside a Unity scene.",
     tech: ["Python", "C#", "Java", "Unity"],
     coverImage: "/images/projects/home-gen-new-gen/cover.webp",
     images: [{ src: "/images/projects/home-gen-new-gen/cover.webp", alt: "Home Gen New Gen project preview" }],
@@ -163,7 +163,7 @@ export const projects: Project[] = [
     subtitle: "Game Boy Advance-styled personal site",
     description:
       "The first version of my personal site — a single-page portfolio styled after a Game Boy Advance, complete with a D-pad and buttons for navigating between About, Projects, Publications, Experience, and Contact.",
-    body: "Built with vanilla HTML, CSS, and JavaScript and deployed on GitHub Pages, with no framework or build step.",
+    body: "Built with vanilla HTML, CSS, and JavaScript and deployed on GitHub Pages, with no framework or build step. Every section lives inside a single scrollable screen, with the on-screen D-pad and A/B buttons wired up to actually move focus between panels for a playable, console-like feel.",
     tech: ["HTML", "CSS", "JavaScript", "GitHub Pages"],
     coverImage: "/images/projects/portfolio-v1/cover.webp",
     images: [{ src: "/images/projects/portfolio-v1/cover.webp", alt: "Portfolio V1 project preview" }],
