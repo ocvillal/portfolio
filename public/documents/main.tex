@@ -1,0 +1,170 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.7in}
+\addtolength{\textheight}{1.4in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure PDF is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge Octavio Villalobos} \\ \vspace{1pt}
+    Wildomar, CA $|$ octvillal@gmail.com $|$ (951) 357-8429 $|$ US Citizen \\ 
+    \href{https://linkedin.com/in/octavio-villalobos}{\underline{linkedin.com/in/octavio-villalobos/}} $|$
+    \href{https://github.com/ocvillal}{\underline{github.com/ocvillal}} $|$
+    \href{https://ocvillal.github.io/portfolio/}{\underline{ocvillal.github.io/portfolio/}}
+\end{center}
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {University of California, Santa Cruz}{June 2026}
+      {Master of Science in Computer Science | GPA: 3.74/4.00}{Santa Cruz, CA}
+
+    \resumeSubheading
+      {University of California, Santa Cruz}{June 2024}
+      {Bachelor of Science in Computer Science, With Honors | GPA: 3.60/4.00}{Santa Cruz, CA}
+
+  \resumeSubHeadingListEnd
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Research Project Lead @ Sloth Lab -- UCSC}{Oct 2025 -- Present}
+      {Santa Cruz, CA}{}
+      \resumeItemListStart
+        \resumeItem{Led a 3-person team extending the Lyra opinion dynamics framework into a scalable multi-agent simulation modeling personality-driven NPC behavior across 1,000+ simulation runs}
+        \resumeItem{Designed agent architectures with 23-dimensional state tracking and per-agent \textbf{Actor-Critic (A2C)} RL policies across 5 personality archetypes using prospect-theory-based persuasion modeling}
+        \resumeItem{Built \textbf{MLflow}-tracked clustering and behavioral-analysis pipelines to validate emergent social behavior, culminating to a publication to AIIDE 2026}
+      \resumeItemListEnd
+    \resumeSubheading
+      {AI Engineer Intern @ Silicon Valley Certification Hub}{June 2025 -- Oct 2025, June 2026 - Present}
+      {Palo Alto, CA}{}
+        \resumeItemListStart
+            \resumeItem{Owned end-to-end development of an \textbf{LLM-powered} coaching platform (\textbf{Flask}, \textbf{AWS}) built around a RAG pipeline, generating executive-style scenario assessments across 12 industries}
+            \resumeItem{Fine-tuned Gemma-3-1B and LLaMA-3.2-1B via \textbf{LoRA (PEFT)}, improving factual alignment up to 25\% and response consistency up to 9\% on held-out evaluation data}
+            \resumeItem{Engineered rubric-based scoring pipelines using structured \textbf{prompt engineering} and \textbf{ElevenLabs} text-to-speech integration to evaluate relevance, risk coverage, and actionability}
+        \resumeItemListEnd
+
+    \resumeSubheading
+      {Teaching Assistant @ University of California, Santa Cruz}{Sep 2024 -- June 2026}
+      {Santa Cruz, CA}{}
+      \resumeItemListStart
+        \resumeItem{Delivered lectures on databases, AI, LLMs, and technical writing to 150+ students across 4 UCSC courses}
+        \resumeItem{Led weekly discussion sections for 30 students, developing instructional materials and hands-on lesson plans}
+        \resumeItem{Designed coursework, assignments, and exams across 6 courses to improve lecture-assignment alignment}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Projects}
+    \resumeSubHeadingListStart
+
+            \resumeProjectHeading
+          {\href{https://nihalernest89.github.io/Formula-Forecast/}{\textbf{FormulaForecast}} $|$ \emph{Python, PyTorch, scikit-learn}}{Nov 2025 -- Present}
+            \resumeItemListStart
+                \resumeItem{Built a \textbf{PyTorch} deep learning framework predicting F1 top-10 finishing positions from \textbf{FastF1} telemetry, engineering 9 domain-specific features with 3-sigma outlier clipping}
+                \resumeItem{Trained a 3-layer \textbf{MLP} (128$\to$64$\to$32) with Dropout and Batch Normalization, achieving 88.7\% within-3 accuracy and cutting prediction error 41\% versus baseline models}
+            \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{Insight Deck} $|$ \emph{Python, React, Flask, LangChain, ChromaDB}}{Jan 2025 -- Jan 2026}
+          \resumeItemListStart
+            \resumeItem{Co-developed a multi-agent \textbf{RAG} pipeline (\textbf{LangChain}) combining \textbf{BM25} and \textbf{ChromaDB} vector search to automate investor presentation generation from financial filings}
+            \resumeItem{Engineered dynamic query-generation and \textbf{LLM critique/repair} pipelines, boosting content population from 74\% to 98\% and cutting slide-planning latency by 49\%}
+        \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{LLMs are ACDs} $|$ \emph{Python, CybORG, OpenAI API, HuggingFace}} {Jan 2025 -- June 2025}
+          \resumeItemListStart
+            \resumeItem{Co-authored an \textbf{IEEE CAI 2025} paper building the first \textbf{LLM+RL} agent framework for \textbf{CybORG CAGE 4} multi-agent cyber defense, published as arXiv:2505.04843}
+            \resumeItem{Built an 8-bit inter-agent communication protocol and Python API adapters (\textbf{OpenAI}, \textbf{DeepSeek}, \textbf{HuggingFace}), achieving $\sim$104$\times$ faster action selection than RL baselines}
+          \resumeItemListEnd
+
+
+    \resumeSubHeadingListEnd
+
+%-----------SKILLS-----------
+\section{Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages:} Python, C/C++, Java, JavaScript, TypeScript, SQL (PostgreSQL, MySQL, SQLite) C\#, HTML/CSS\\
+    \textbf{Fullstack} React.js, React Native (Expo), HTML5, Express.js, Node.js, RESTful APIs, Supabase \\
+    \textbf{AI/ML \& Generative AI:} PyTorch, TensorFlow, Scikit-learn, LangChain, LangGraph, Hugging Face, OpenAI API, Claude API, LoRA, QLoRA, Ollama, ChromaDB, MLflow, Weights \& Biases (W\&B), Pandas, Matplotlib\\
+    \textbf{Cloud \& Infrastructure:}, AWS, Docker, Linux \\
+    \textbf{DevOps \& Testing:} Git, GitHub Actions, CI/CD Pipelines, Pytest \\
+    }}
+ \end{itemize}
+\end{document}
