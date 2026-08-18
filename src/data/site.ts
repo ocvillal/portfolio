@@ -14,7 +14,7 @@ export const site = {
     github: "https://github.com/ocvillal",
     linkedin: "https://www.linkedin.com/in/octavio-villalobos/",
   },
-  resumeHref: "/documents/Main_resume_August.pdf",
+  resumeHref: "/documents/Resume - Octavio Villalobos.pdf",
   terminalIntro: {
     query: "who is octavio villalobos?",
     roleTags: ["Computer Scientist", "AI Engineer Intern", "Researcher"],
