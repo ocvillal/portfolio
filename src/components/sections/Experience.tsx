@@ -26,7 +26,7 @@ export function Experience() {
         total={experience.length}
         color={PAGE_COLORS.experience}
       />
-      <div className="mx-auto max-w-5xl px-4 py-16 xl:pl-64">
+      <div className="mx-auto max-w-5xl px-4 py-16">
         <Reveal>
           <h1
             className="text-sm font-semibold uppercase tracking-widest"

@@ -25,7 +25,7 @@ export function ProjectGrid() {
         total={projects.length}
         color={PAGE_COLORS.projects}
       />
-      <div className="mx-auto max-w-5xl px-4 py-16 xl:pl-64">
+      <div className="mx-auto max-w-5xl px-4 py-16">
         <Reveal>
           <h1
             className="text-sm font-semibold uppercase tracking-widest"

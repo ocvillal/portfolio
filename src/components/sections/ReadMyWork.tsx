@@ -7,7 +7,7 @@ import { SpotlightCard } from "@/components/motion/SpotlightCard";
 export function ReadMyWork() {
   return (
     <section id="home-read-my-work" className="bg-[var(--color-bg-secondary)]">
-      <div className="mx-auto max-w-5xl px-4 py-16 xl:pl-64">
+      <div className="mx-auto max-w-5xl px-4 py-16">
         <Reveal>
           <h2
             className="text-sm font-semibold uppercase tracking-widest"

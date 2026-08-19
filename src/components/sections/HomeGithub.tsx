@@ -5,7 +5,7 @@ import { Reveal } from "@/components/motion/Reveal";
 export function HomeGithub() {
   return (
     <section id="home-github" className="bg-[var(--color-bg-secondary)]">
-      <div className="mx-auto max-w-5xl px-4 py-16 xl:pl-64">
+      <div className="mx-auto max-w-5xl px-4 py-16">
         <Reveal>
           <h4 className="text-sm font-semibold uppercase tracking-widest text-fg-muted">
             Recent GitHub activity
