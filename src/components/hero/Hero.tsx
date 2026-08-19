@@ -26,7 +26,7 @@ export function Hero() {
     <section id="home-intro" className="relative overflow-hidden">
       <div className="bg-grid-pattern pointer-events-none absolute inset-0 -z-10" />
 
-      <div className="mx-auto flex min-h-[calc(100vh-8rem)] max-w-5xl items-center px-4 py-16">
+      <div className="mx-auto flex min-h-[calc(100vh-8rem)] max-w-5xl items-center px-4 py-16 xl:pl-64">
         <div
           className="w-full overflow-hidden rounded-xl border border-[var(--color-border)] shadow-2xl"
           style={{ background: "var(--terminal-bg)" }}

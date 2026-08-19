@@ -7,7 +7,7 @@ export function HomeSkills() {
   return (
     <section id="home-skills" className="relative bg-[var(--color-bg)]">
       <div className="bg-grid-pattern pointer-events-none absolute inset-0 -z-10" />
-      <div className="mx-auto max-w-5xl px-4 py-16">
+      <div className="mx-auto max-w-5xl px-4 py-16 xl:pl-64">
         <Skills
           heading={
             <Reveal>

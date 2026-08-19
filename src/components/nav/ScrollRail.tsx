@@ -14,7 +14,7 @@ export function ScrollRail({
   const remaining = total - index - 1;
 
   return (
-    <div className="pointer-events-none fixed left-6 top-1/2 z-30 hidden max-w-[240px] -translate-y-1/2 flex-col gap-1 rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg)]/90 p-3 shadow-lg backdrop-blur-sm xl:flex">
+    <div className="pointer-events-none fixed left-6 top-1/2 z-30 hidden max-w-[240px] -translate-y-1/2 flex-col gap-1 xl:flex">
       <span className="text-xs font-semibold uppercase tracking-widest text-fg-muted">{eyebrow}</span>
       <span className="text-2xl font-black leading-tight transition-colors duration-300" style={{ color }}>
         {label}
