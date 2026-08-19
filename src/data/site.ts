@@ -20,7 +20,7 @@ export const site = {
     roleTags: ["Computer Scientist", "AI Engineer Intern", "Researcher"],
     lines: [
       "Builds AI systems, from research to production.",
-      "AI Engineer Intern @ Silicon Valley Certification Hub. Research Project Lead @ Sloth Lab, UC Santa Cruz.",
+      "AI Engineer Intern @ Silicon Valley Certification Hub. ML Research Lead @ Sloth Lab, UC Santa Cruz.",
       "M.S. & B.S. in Computer Science — UC Santa Cruz, with honors.",
       "Published: “LLMs are Autonomous Cyber Defenders” — IEEE CAI 2025.",
       "Shoots on a 2013 Fujifilm X100S. Long-term plan: shoot only film. Short-term plan: organize the archive.",

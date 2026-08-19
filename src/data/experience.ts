@@ -10,7 +10,7 @@ export const experience: ExperienceEntry[] = [
   {
     org: "Sloth Lab, UC Santa Cruz",
     location: "Santa Cruz, CA",
-    role: "Research Project Lead",
+    role: "ML Research Lead",
     period: "October 2025 – Present",
     bullets: [
       "Led a 3-person team extending the Lyra opinion dynamics framework into a scalable multi-agent simulation system for personality-driven NPC interactions and emergent social behavior.",
