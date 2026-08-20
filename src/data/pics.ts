@@ -197,6 +197,7 @@ export const photos: Photo[] = [
     height: 667,
     alt: "Photograph by Octavio Villalobos",
     date: "2024-07-08",
+    location: { label: "Querétaro, Mexico", lat: 20.5888, lng: -100.3899 },
   },
   {
     slug: "img_5870",
@@ -255,13 +256,14 @@ export const photos: Photo[] = [
   },
   {
     slug: "img_7034",
-    title: "Olivia Rodrigo",
+    title: "Olivia Rodrigo @ Kia Forum",
     gridSrc: "/images/pics/grid/img_7034.webp",
     fullSrc: "/images/pics/full/img_7034.webp",
     width: 667,
     height: 1000,
     alt: "Photograph by Octavio Villalobos",
     date: "2024-08-24",
+    location: { label: "Kia Forum, Inglewood, CA", lat: 33.9581, lng: -118.3417 },
   },
   {
     slug: "img_7656",
@@ -283,15 +285,18 @@ export const photos: Photo[] = [
     height: 1000,
     alt: "Photograph by Octavio Villalobos",
     date: "2025-09-24",
+    location: { label: "Disneyland, Anaheim, CA", lat: 33.8121, lng: -117.919 },
   },
   {
     slug: "img_7660",
+    title: "El Theatro en Guanajuato",
     gridSrc: "/images/pics/grid/img_7660.webp",
     fullSrc: "/images/pics/full/img_7660.webp",
     width: 667,
     height: 1000,
     alt: "Photograph by Octavio Villalobos",
     date: "2025-07-23",
+    location: { label: "Teatro Juárez, Guanajuato, Mexico", lat: 21.019, lng: -101.2574 },
   },
   {
     slug: "dscf0049",
