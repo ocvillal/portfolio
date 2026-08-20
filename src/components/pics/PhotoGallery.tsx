@@ -85,13 +85,14 @@ export function PhotoGallery({ photos }: { photos: Photo[] }) {
             className="relative max-h-[90vh] max-w-full"
             onClick={(e) => e.stopPropagation()}
           >
-            <Image
-              src={withBasePath(active.gridSrc)}
+            {/* eslint-disable-next-line @next/next/no-img-element -- tiny pre-blurred base64 placeholder, not next/image-optimizable */}
+            <img
+              src={active.blurDataURL}
               alt=""
               aria-hidden="true"
               width={active.width}
               height={active.height}
-              className="max-h-[90vh] max-w-full scale-105 rounded-lg object-contain blur-lg"
+              className="max-h-[90vh] max-w-full rounded-lg object-contain"
             />
             <Image
               src={withBasePath(active.fullSrc)}

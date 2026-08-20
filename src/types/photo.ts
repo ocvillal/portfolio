@@ -13,5 +13,6 @@ export interface Photo {
   alt: string;
   title?: string;
   date: string;
+  blurDataURL: string;
   location?: PhotoLocation;
 }
