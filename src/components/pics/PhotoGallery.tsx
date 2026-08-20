@@ -81,14 +81,27 @@ export function PhotoGallery({ photos }: { photos: Photo[] }) {
           >
             ‹
           </button>
-          <Image
-            src={withBasePath(active.fullSrc)}
-            alt={active.alt}
-            width={active.width}
-            height={active.height}
-            className="max-h-[90vh] max-w-full rounded-lg object-contain"
+          <div
+            className="relative max-h-[90vh] max-w-full"
             onClick={(e) => e.stopPropagation()}
-          />
+          >
+            <Image
+              src={withBasePath(active.gridSrc)}
+              alt=""
+              aria-hidden="true"
+              width={active.width}
+              height={active.height}
+              className="max-h-[90vh] max-w-full scale-105 rounded-lg object-contain blur-lg"
+            />
+            <Image
+              src={withBasePath(active.fullSrc)}
+              alt={active.alt}
+              width={active.width}
+              height={active.height}
+              priority
+              className="absolute inset-0 max-h-[90vh] max-w-full rounded-lg object-contain"
+            />
+          </div>
           <div className="absolute bottom-4 left-1/2 z-10 -translate-x-1/2 px-4 sm:bottom-6">
             <PhotoInfoPanel key={active.slug} photo={active} />
           </div>
