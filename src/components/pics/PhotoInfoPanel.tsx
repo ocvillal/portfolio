@@ -25,7 +25,7 @@ export function PhotoInfoPanel({ photo }: { photo: Photo }) {
           className="relative mb-2 h-20 overflow-hidden rounded-lg"
           style={{ background: "var(--terminal-bg)" }}
         >
-          <MapView lat={photo.location!.lat!} lng={photo.location!.lng!} zoom={11} />
+          <MapView lat={photo.location!.lat!} lng={photo.location!.lng!} />
           <a
             href="https://www.openstreetmap.org/copyright"
             target="_blank"

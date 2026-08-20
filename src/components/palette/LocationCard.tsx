@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { MapPin, Moon, Sun } from "lucide-react";
 import { site } from "@/data/site";
 import { MapView } from "@/components/map/MapView";
-import "maplibre-gl/dist/maplibre-gl.css";
 
 const TIMEZONE = "America/Los_Angeles";
 const CITY_LABEL = site.location.split(",")[0].toUpperCase();
@@ -50,7 +49,7 @@ export function LocationCard({ compact = false }: { compact?: boolean }) {
         className={compact ? "relative mt-1.5 h-16 overflow-hidden rounded-lg sm:h-20" : "relative mt-2 h-28 overflow-hidden rounded-lg"}
         style={{ background: "var(--terminal-bg)" }}
       >
-        <MapView lat={site.coordinates.lat} lng={site.coordinates.lng} zoom={10.5} />
+        <MapView lat={site.coordinates.lat} lng={site.coordinates.lng} />
         <a
           href="https://www.openstreetmap.org/copyright"
           target="_blank"
