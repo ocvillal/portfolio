@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import { withBasePath } from "@/lib/paths";
 import { Reveal } from "@/components/motion/Reveal";
+import { PhotoFeedCard } from "@/components/pics/PhotoFeedCard";
 import { PhotoInfoPanel } from "@/components/pics/PhotoInfoPanel";
 import type { Photo } from "@/types/photo";
 
@@ -35,24 +36,10 @@ export function PhotoGallery({ photos }: { photos: Photo[] }) {
 
   return (
     <>
-      <div className="columns-2 gap-4 sm:columns-3 [column-fill:_balance]">
+      <div className="mx-auto flex max-w-md flex-col gap-6">
         {photos.map((photo, i) => (
-          <Reveal key={photo.slug} delay={(i % 6) * 60} className="mb-4 break-inside-avoid">
-            <button
-              type="button"
-              onClick={() => setActiveIndex(i)}
-              data-cursor-hover
-              className="group block w-full overflow-hidden rounded-xl bg-black/10"
-            >
-              <Image
-                src={withBasePath(photo.gridSrc)}
-                alt={photo.alt}
-                width={photo.width}
-                height={photo.height}
-                sizes="(min-width: 640px) 33vw, 50vw"
-                className="w-full object-cover transition-transform duration-300 group-hover:scale-105"
-              />
-            </button>
+          <Reveal key={photo.slug} delay={(i % 6) * 60}>
+            <PhotoFeedCard photo={photo} onOpen={() => setActiveIndex(i)} />
           </Reveal>
         ))}
       </div>
