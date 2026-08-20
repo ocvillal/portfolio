@@ -1,3 +1,9 @@
+export interface PhotoLocation {
+  label: string;
+  lat?: number;
+  lng?: number;
+}
+
 export interface Photo {
   slug: string;
   gridSrc: string;
@@ -5,4 +11,6 @@ export interface Photo {
   width: number;
   height: number;
   alt: string;
+  date: string;
+  location?: PhotoLocation;
 }

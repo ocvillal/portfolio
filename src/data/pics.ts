@@ -8,6 +8,7 @@ export const photos: Photo[] = [
     width: 667,
     height: 1000,
     alt: "Photograph by Octavio Villalobos",
+    date: "2024-06-21",
   },
   {
     slug: "dscf4425",
@@ -16,6 +17,7 @@ export const photos: Photo[] = [
     width: 667,
     height: 1000,
     alt: "Photograph by Octavio Villalobos",
+    date: "2024-06-21",
   },
   {
     slug: "dscf7693",
@@ -24,6 +26,8 @@ export const photos: Photo[] = [
     width: 667,
     height: 1000,
     alt: "Photograph by Octavio Villalobos",
+    date: "2024-08-03",
+    location: { label: "Madrid, Spain", lat: 40.42, lng: -3.7025 },
   },
   {
     slug: "dscf7879",
@@ -32,6 +36,8 @@ export const photos: Photo[] = [
     width: 667,
     height: 1000,
     alt: "Photograph by Octavio Villalobos",
+    date: "2024-08-04",
+    location: { label: "Madrid, Spain", lat: 40.418, lng: -3.7143 },
   },
   {
     slug: "dscf8195",
@@ -40,6 +46,8 @@ export const photos: Photo[] = [
     width: 1000,
     height: 667,
     alt: "Photograph by Octavio Villalobos",
+    date: "2024-08-06",
+    location: { label: "London, UK", lat: 51.5055, lng: -0.0754 },
   },
   {
     slug: "dscf8380",
@@ -48,6 +56,8 @@ export const photos: Photo[] = [
     width: 667,
     height: 1000,
     alt: "Photograph by Octavio Villalobos",
+    date: "2024-08-06",
+    location: { label: "London, UK", lat: 51.5055, lng: -0.0754 },
   },
   {
     slug: "dscf8434",
@@ -56,6 +66,8 @@ export const photos: Photo[] = [
     width: 667,
     height: 1000,
     alt: "Photograph by Octavio Villalobos",
+    date: "2024-08-07",
+    location: { label: "London, UK", lat: 51.5117, lng: -0.124 },
   },
   {
     slug: "dscf8645",
@@ -64,6 +76,8 @@ export const photos: Photo[] = [
     width: 667,
     height: 1000,
     alt: "Photograph by Octavio Villalobos",
+    date: "2024-08-07",
+    location: { label: "London, UK", lat: 51.5117, lng: -0.124 },
   },
   {
     slug: "dscf8860",
@@ -72,6 +86,8 @@ export const photos: Photo[] = [
     width: 667,
     height: 1000,
     alt: "Photograph by Octavio Villalobos",
+    date: "2024-08-08",
+    location: { label: "London, UK", lat: 51.5133, lng: -0.1402 },
   },
   {
     slug: "dscf8976",
@@ -80,6 +96,8 @@ export const photos: Photo[] = [
     width: 667,
     height: 1000,
     alt: "Photograph by Octavio Villalobos",
+    date: "2024-08-09",
+    location: { label: "London, UK", lat: 51.5136, lng: -0.1365 },
   },
   {
     slug: "dscf9001",
@@ -88,6 +106,8 @@ export const photos: Photo[] = [
     width: 667,
     height: 1000,
     alt: "Photograph by Octavio Villalobos",
+    date: "2024-08-10",
+    location: { label: "Amsterdam, Netherlands", lat: 52.3676, lng: 4.9041 },
   },
   {
     slug: "dscf9005",
@@ -96,6 +116,8 @@ export const photos: Photo[] = [
     width: 667,
     height: 1000,
     alt: "Photograph by Octavio Villalobos",
+    date: "2024-08-10",
+    location: { label: "Amsterdam, Netherlands", lat: 52.3676, lng: 4.9041 },
   },
   {
     slug: "dscf9108",
@@ -104,6 +126,8 @@ export const photos: Photo[] = [
     width: 667,
     height: 1000,
     alt: "Photograph by Octavio Villalobos",
+    date: "2024-08-12",
+    location: { label: "Amsterdam, Netherlands", lat: 52.3676, lng: 4.9041 },
   },
   {
     slug: "dscf9193",
@@ -112,6 +136,8 @@ export const photos: Photo[] = [
     width: 667,
     height: 1000,
     alt: "Photograph by Octavio Villalobos",
+    date: "2024-08-13",
+    location: { label: "Netherlands" },
   },
   {
     slug: "dscf9502",
@@ -120,6 +146,8 @@ export const photos: Photo[] = [
     width: 1000,
     height: 667,
     alt: "Photograph by Octavio Villalobos",
+    date: "2024-08-15",
+    location: { label: "Paris, France", lat: 48.8414, lng: 2.253 },
   },
   {
     slug: "img_5795",
@@ -128,6 +156,8 @@ export const photos: Photo[] = [
     width: 667,
     height: 1000,
     alt: "Photograph by Octavio Villalobos",
+    date: "2024-08-01",
+    location: { label: "Barcelona, Spain", lat: 41.4036, lng: 2.1744 },
   },
   {
     slug: "img_5796",
@@ -136,6 +166,8 @@ export const photos: Photo[] = [
     width: 667,
     height: 1000,
     alt: "Photograph by Octavio Villalobos",
+    date: "2024-08-01",
+    location: { label: "Barcelona, Spain", lat: 41.4036, lng: 2.1744 },
   },
   {
     slug: "img_5865-2",
@@ -144,6 +176,7 @@ export const photos: Photo[] = [
     width: 1000,
     height: 667,
     alt: "Photograph by Octavio Villalobos",
+    date: "2024-07-08",
   },
   {
     slug: "img_5870",
@@ -152,6 +185,8 @@ export const photos: Photo[] = [
     width: 667,
     height: 1000,
     alt: "Photograph by Octavio Villalobos",
+    date: "2024-07-16",
+    location: { label: "Mexico" },
   },
   {
     slug: "img_5871",
@@ -160,6 +195,8 @@ export const photos: Photo[] = [
     width: 667,
     height: 1000,
     alt: "Photograph by Octavio Villalobos",
+    date: "2024-07-16",
+    location: { label: "Mexico" },
   },
   {
     slug: "img_5874",
@@ -168,6 +205,7 @@ export const photos: Photo[] = [
     width: 800,
     height: 1000,
     alt: "Photograph by Octavio Villalobos",
+    date: "2024-07-25",
   },
   {
     slug: "img_5878",
@@ -176,6 +214,7 @@ export const photos: Photo[] = [
     width: 800,
     height: 1000,
     alt: "Photograph by Octavio Villalobos",
+    date: "2024-07-25",
   },
   {
     slug: "img_5879",
@@ -184,6 +223,7 @@ export const photos: Photo[] = [
     width: 800,
     height: 1000,
     alt: "Photograph by Octavio Villalobos",
+    date: "2024-07-25",
   },
   {
     slug: "img_7034",
@@ -192,6 +232,7 @@ export const photos: Photo[] = [
     width: 667,
     height: 1000,
     alt: "Photograph by Octavio Villalobos",
+    date: "2024-08-24",
   },
   {
     slug: "img_7656",
@@ -200,6 +241,7 @@ export const photos: Photo[] = [
     width: 667,
     height: 1000,
     alt: "Photograph by Octavio Villalobos",
+    date: "2025-08-19",
   },
   {
     slug: "img_7657",
@@ -208,6 +250,7 @@ export const photos: Photo[] = [
     width: 667,
     height: 1000,
     alt: "Photograph by Octavio Villalobos",
+    date: "2025-09-24",
   },
   {
     slug: "img_7660",
@@ -216,6 +259,7 @@ export const photos: Photo[] = [
     width: 667,
     height: 1000,
     alt: "Photograph by Octavio Villalobos",
+    date: "2025-07-23",
   },
   {
     slug: "dscf0049",
@@ -224,6 +268,7 @@ export const photos: Photo[] = [
     width: 1000,
     height: 667,
     alt: "Photograph by Octavio Villalobos",
+    date: "2026-04-23",
   },
   {
     slug: "dscf0057",
@@ -232,6 +277,7 @@ export const photos: Photo[] = [
     width: 1000,
     height: 667,
     alt: "Photograph by Octavio Villalobos",
+    date: "2026-04-23",
   },
   {
     slug: "dscf0076",
@@ -240,6 +286,7 @@ export const photos: Photo[] = [
     width: 1000,
     height: 667,
     alt: "Photograph by Octavio Villalobos",
+    date: "2026-04-24",
   },
   {
     slug: "dscf0104",
@@ -248,5 +295,6 @@ export const photos: Photo[] = [
     width: 1000,
     height: 667,
     alt: "Photograph by Octavio Villalobos",
+    date: "2026-04-28",
   },
 ];

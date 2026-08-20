@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import { withBasePath } from "@/lib/paths";
 import { Reveal } from "@/components/motion/Reveal";
+import { PhotoInfoPanel } from "@/components/pics/PhotoInfoPanel";
 import type { Photo } from "@/types/photo";
 
 export function PhotoGallery({ photos }: { photos: Photo[] }) {
@@ -88,6 +89,9 @@ export function PhotoGallery({ photos }: { photos: Photo[] }) {
             className="max-h-[90vh] max-w-full rounded-lg object-contain"
             onClick={(e) => e.stopPropagation()}
           />
+          <div className="absolute bottom-4 left-1/2 z-10 -translate-x-1/2 px-4 sm:bottom-6">
+            <PhotoInfoPanel key={active.slug} photo={active} />
+          </div>
           <button
             type="button"
             onClick={(e) => {

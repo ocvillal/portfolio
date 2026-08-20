@@ -1,17 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { MapPin, Moon, Sun } from "lucide-react";
 import { site } from "@/data/site";
-import { withBasePath } from "@/lib/paths";
+import { MapView } from "@/components/map/MapView";
 import "maplibre-gl/dist/maplibre-gl.css";
 
 const TIMEZONE = "America/Los_Angeles";
 const CITY_LABEL = site.location.split(",")[0].toUpperCase();
-const MAP_STYLES = {
-  dark: "https://tiles.openfreemap.org/styles/dark",
-  light: "https://tiles.openfreemap.org/styles/positron",
-};
 
 function getClockParts(date: Date) {
   const timeString = date.toLocaleTimeString("en-US", { timeZone: TIMEZONE, hour12: false });
@@ -20,76 +16,6 @@ function getClockParts(date: Date) {
   );
   const isNight = hour < 6 || hour >= 19;
   return { timeString, isNight };
-}
-
-function readTheme(): "dark" | "light" {
-  return document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
-}
-
-function LocationMap() {
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const mapRef = useRef<import("maplibre-gl").Map | null>(null);
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
-
-  useEffect(() => {
-    const root = document.documentElement;
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- theme attribute is only known client-side
-    setTheme(readTheme());
-
-    const observer = new MutationObserver(() => setTheme(readTheme()));
-    observer.observe(root, { attributes: true, attributeFilter: ["data-theme"] });
-    return () => observer.disconnect();
-  }, []);
-
-  // Creates the map once, using whatever theme is on the page right now — independent of
-  // the `theme` state above, which may not have synced from its SSR-safe default yet.
-  useEffect(() => {
-    if (!containerRef.current) return;
-    let cancelled = false;
-
-    import("maplibre-gl").then(({ Map: MapLibreMap, Marker, setWorkerUrl }) => {
-      if (cancelled || !containerRef.current) return;
-
-      // Next's bundler (Turbopack in dev) doesn't reliably resolve MapLibre's internal
-      // `new Worker(new URL(...))` call, silently breaking the worker that parses vector
-      // tiles — the map loads but nothing ever renders beyond the flat background layer.
-      // Pointing it at the plain static files below sidesteps that entirely.
-      setWorkerUrl(withBasePath("/maplibre/maplibre-gl-worker.mjs"));
-
-      const map = new MapLibreMap({
-        container: containerRef.current,
-        style: MAP_STYLES[readTheme()],
-        center: [site.coordinates.lng, site.coordinates.lat],
-        zoom: 10.5,
-        // MapLibre's built-in attribution widget doesn't collapse to its compact "i" form at
-        // this card's size — it renders expanded and covers the whole map. Attribution is
-        // handled separately below with a small static credit link instead.
-        attributionControl: false,
-        cooperativeGestures: true,
-      });
-      map.dragRotate.disable();
-      map.touchZoomRotate.disableRotation();
-
-      new Marker({ color: "#ef4444" })
-        .setLngLat([site.coordinates.lng, site.coordinates.lat])
-        .addTo(map);
-
-      mapRef.current = map;
-    });
-
-    return () => {
-      cancelled = true;
-      mapRef.current?.remove();
-      mapRef.current = null;
-    };
-  }, []);
-
-  // Swaps the live map's style whenever the site theme toggles after mount.
-  useEffect(() => {
-    mapRef.current?.setStyle(MAP_STYLES[theme]);
-  }, [theme]);
-
-  return <div ref={containerRef} className="absolute inset-0 h-full w-full" />;
 }
 
 export function LocationCard({ compact = false }: { compact?: boolean }) {
@@ -124,7 +50,7 @@ export function LocationCard({ compact = false }: { compact?: boolean }) {
         className={compact ? "relative mt-1.5 h-16 overflow-hidden rounded-lg sm:h-20" : "relative mt-2 h-28 overflow-hidden rounded-lg"}
         style={{ background: "var(--terminal-bg)" }}
       >
-        <LocationMap />
+        <MapView lat={site.coordinates.lat} lng={site.coordinates.lng} zoom={10.5} />
         <a
           href="https://www.openstreetmap.org/copyright"
           target="_blank"
