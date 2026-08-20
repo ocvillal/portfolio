@@ -33,6 +33,7 @@ export function MapView({ lat, lng, zoom = 12 }: { lat: number; lng: number; zoo
   useEffect(() => {
     if (!containerRef.current) return;
     let cancelled = false;
+    let resizeObserver: ResizeObserver | undefined;
 
     import("maplibre-gl").then(({ Map: MapLibreMap, Marker, setWorkerUrl }) => {
       if (cancelled || !containerRef.current) return;
@@ -60,10 +61,18 @@ export function MapView({ lat, lng, zoom = 12 }: { lat: number; lng: number; zoo
       new Marker({ color: "#ef4444" }).setLngLat([lng, lat]).addTo(map);
 
       mapRef.current = map;
+
+      // The container can still be mid-transition (e.g. a lightbox panel animating in) when
+      // this runs, so MapLibre may capture a stale/zero size for its canvas and never repaint.
+      // Watching the container and telling the map to re-measure whenever it actually settles
+      // fixes that without guessing at a fixed delay.
+      resizeObserver = new ResizeObserver(() => map.resize());
+      resizeObserver.observe(containerRef.current);
     });
 
     return () => {
       cancelled = true;
+      resizeObserver?.disconnect();
       mapRef.current?.remove();
       mapRef.current = null;
     };
