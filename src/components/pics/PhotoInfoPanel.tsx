@@ -38,7 +38,16 @@ export function PhotoInfoPanel({ photo }: { photo: Photo }) {
         </div>
       )}
 
-      <div className="flex items-center gap-2 text-sm font-semibold" style={{ color: "var(--terminal-fg)" }}>
+      {photo.title && (
+        <div className="text-base font-bold" style={{ color: "var(--terminal-fg)" }}>
+          {photo.title}
+        </div>
+      )}
+
+      <div
+        className={photo.title ? "mt-1 flex items-center gap-2 text-sm" : "flex items-center gap-2 text-sm font-semibold"}
+        style={{ color: photo.title ? "var(--terminal-fg-muted)" : "var(--terminal-fg)" }}
+      >
         <Calendar size={14} style={{ color: "var(--color-accent)" }} />
         {formatDate(photo.date)}
       </div>

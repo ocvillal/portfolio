@@ -11,6 +11,7 @@ export interface Photo {
   width: number;
   height: number;
   alt: string;
+  title?: string;
   date: string;
   location?: PhotoLocation;
 }
