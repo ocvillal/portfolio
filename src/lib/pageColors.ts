@@ -1,7 +1,7 @@
 export const PAGE_COLORS = {
-  home: "var(--color-accent-2)",
+  home: "var(--color-accent)",
   about: "var(--color-accent)",
-  projects: "var(--color-accent-2)",
+  projects: "var(--color-accent)",
   publications: "var(--color-accent-3)",
   experience: "var(--color-accent-4)",
   pics: "var(--color-accent-5)",
