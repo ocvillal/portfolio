@@ -15,6 +15,9 @@ export const site = {
     linkedin: "https://www.linkedin.com/in/octavio-villalobos/",
   },
   resumeHref: "/documents/Resume - Octavio Villalobos.pdf",
+  // Get a free access key at https://web3forms.com/ (emailed to you, safe to expose
+  // client-side — it's a public form endpoint, not a secret) and paste it in below.
+  web3formsAccessKey: "YOUR_WEB3FORMS_ACCESS_KEY",
   terminalIntro: {
     query: "who is octavio villalobos?",
     roleTags: ["Computer Scientist", "AI Engineer Intern", "Researcher"],
