@@ -31,6 +31,12 @@ export function PhotoGallery({ photos }: { photos: Photo[] }) {
     return () => window.removeEventListener("keydown", handleKey);
   }, [activeIndex, close, showPrev, showNext]);
 
+  useEffect(() => {
+    if (activeIndex === null) return;
+    document.body.setAttribute("data-suppress-cursor", "true");
+    return () => document.body.removeAttribute("data-suppress-cursor");
+  }, [activeIndex]);
+
   const active = activeIndex === null ? null : photos[activeIndex];
 
   return (

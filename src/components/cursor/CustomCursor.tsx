@@ -2,18 +2,26 @@
 
 import { useEffect, useRef, useState } from "react";
 
+function readSuppressed(): boolean {
+  return document.body.hasAttribute("data-suppress-cursor");
+}
+
 export function CustomCursor() {
   const dotRef = useRef<HTMLDivElement | null>(null);
   const [active, setActive] = useState(false);
   const [hovering, setHovering] = useState(false);
+  const [suppressed, setSuppressed] = useState(false);
 
   useEffect(() => {
     if (!window.matchMedia("(pointer: fine)").matches) return;
 
     // eslint-disable-next-line react-hooks/set-state-in-effect -- fine-pointer support is only known client-side; renders inactive first to avoid an SSR hydration mismatch
     setActive(true);
-    const previousCursor = document.body.style.cursor;
-    document.body.style.cursor = "none";
+    setSuppressed(readSuppressed());
+    const originalCursor = document.body.style.cursor;
+
+    const observer = new MutationObserver(() => setSuppressed(readSuppressed()));
+    observer.observe(document.body, { attributes: true, attributeFilter: ["data-suppress-cursor"] });
 
     function handleMove(e: MouseEvent) {
       const el = dotRef.current;
@@ -27,11 +35,17 @@ export function CustomCursor() {
     window.addEventListener("mousemove", handleMove);
     return () => {
       window.removeEventListener("mousemove", handleMove);
-      document.body.style.cursor = previousCursor;
+      observer.disconnect();
+      document.body.style.cursor = originalCursor;
     };
   }, []);
 
-  if (!active) return null;
+  useEffect(() => {
+    if (!active) return;
+    document.body.style.cursor = suppressed ? "auto" : "none";
+  }, [active, suppressed]);
+
+  if (!active || suppressed) return null;
 
   return (
     <div
