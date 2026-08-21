@@ -72,8 +72,8 @@ export function Contact() {
     <section className="relative overflow-hidden bg-[var(--color-bg-secondary)]">
       <div className="bg-grid-pattern pointer-events-none absolute inset-0 -z-10" />
 
-      <div className="mx-auto max-w-5xl px-4 py-16">
-        <Reveal>
+      <div className="mx-auto flex max-w-5xl flex-col gap-10 px-4 py-16 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
+        <Reveal className="lg:max-w-sm lg:shrink-0">
           <h1
             className="text-sm font-semibold uppercase tracking-widest"
             style={{ color: PAGE_COLORS.contact }}
@@ -81,7 +81,7 @@ export function Contact() {
             Contact
           </h1>
           <h3 className="mt-4 text-3xl font-bold sm:text-4xl">
-            Let&rsquo;s build <Highlight color={PAGE_COLORS.contact}>something</Highlight>.
+            Let&rsquo;s <Highlight color={PAGE_COLORS.contact}>connect</Highlight>.
           </h3>
           <p className="mt-4 max-w-sm text-fg-muted">
             I&rsquo;m actively looking for entry-level roles in Product Design, SWE,
@@ -112,9 +112,9 @@ export function Contact() {
           </div>
         </Reveal>
 
-        <Reveal delay={120}>
+        <Reveal delay={120} className="w-full lg:max-w-xl">
           <div
-            className="mt-10 max-w-xl overflow-hidden rounded-xl border border-[var(--color-border)] shadow-2xl"
+            className="w-full overflow-hidden rounded-xl border border-[var(--color-border)] shadow-2xl"
             style={{ background: "var(--terminal-bg)" }}
           >
             <div
