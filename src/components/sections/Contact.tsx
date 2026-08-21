@@ -69,7 +69,7 @@ export function Contact() {
   }
 
   return (
-    <section className="relative isolate flex flex-1 flex-col overflow-hidden bg-[var(--color-bg-secondary)]">
+    <section className="relative isolate flex flex-1 flex-col overflow-hidden bg-[var(--color-bg)]">
       <div className="bg-grid-pattern pointer-events-none absolute inset-0 -z-10" />
 
       <div className="mx-auto flex max-w-5xl flex-col gap-10 px-4 py-16 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
