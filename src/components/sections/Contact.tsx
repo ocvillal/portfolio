@@ -6,12 +6,37 @@ import { site } from "@/data/site";
 import { Magnetic } from "@/components/motion/Magnetic";
 import { Reveal } from "@/components/motion/Reveal";
 import { Highlight } from "@/components/motion/Highlight";
+import { TypewriterText } from "@/components/motion/TypewriterText";
 import { PAGE_COLORS } from "@/lib/pageColors";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
-const inputClass =
-  "w-full rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] px-3 py-2 text-sm outline-none transition-colors focus:border-[var(--color-accent)]";
+const PROMPT_TEXT = "send-message --to=octavio";
+
+const fieldClass =
+  "min-w-0 flex-1 border-b border-[var(--terminal-border)] bg-transparent py-1 outline-none transition-colors focus:border-[var(--color-accent-2)] placeholder:opacity-40";
+
+function FieldRow({
+  id,
+  label,
+  children,
+}: {
+  id: string;
+  label: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="flex items-baseline gap-1.5 sm:gap-2">
+      <label htmlFor={id} className="shrink-0 select-none" style={{ color: "var(--color-accent-2)" }}>
+        {label}
+      </label>
+      <span aria-hidden="true" style={{ color: "var(--terminal-fg-muted)" }}>
+        {">"}
+      </span>
+      {children}
+    </div>
+  );
+}
 
 export function Contact() {
   const [status, setStatus] = useState<Status>("idle");
@@ -44,7 +69,9 @@ export function Contact() {
   }
 
   return (
-    <section className="bg-[var(--color-bg-secondary)]">
+    <section className="relative overflow-hidden bg-[var(--color-bg-secondary)]">
+      <div className="bg-grid-pattern pointer-events-none absolute inset-0 -z-10" />
+
       <div className="mx-auto max-w-5xl px-4 py-16">
         <Reveal>
           <h1
@@ -85,88 +112,114 @@ export function Contact() {
           </div>
         </Reveal>
 
-        <Reveal delay={100}>
-          <form
-            onSubmit={handleSubmit}
-            className="mt-10 max-w-md rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg)] p-5"
+        <Reveal delay={120}>
+          <div
+            className="mt-10 max-w-xl overflow-hidden rounded-xl border border-[var(--color-border)] shadow-2xl"
+            style={{ background: "var(--terminal-bg)" }}
           >
-            <input
-              type="checkbox"
-              name="botcheck"
-              tabIndex={-1}
-              autoComplete="off"
-              className="hidden"
-              aria-hidden="true"
-            />
-
-            <div className="flex flex-col gap-4">
-              <div>
-                <label htmlFor="contact-name" className="text-xs font-semibold text-fg-muted">
-                  Name
-                </label>
-                <input
-                  id="contact-name"
-                  name="name"
-                  type="text"
-                  required
-                  className={`mt-1 ${inputClass}`}
-                />
-              </div>
-
-              <div>
-                <label htmlFor="contact-email" className="text-xs font-semibold text-fg-muted">
-                  Email
-                </label>
-                <input
-                  id="contact-email"
-                  name="email"
-                  type="email"
-                  required
-                  className={`mt-1 ${inputClass}`}
-                />
-              </div>
-
-              <div>
-                <label htmlFor="contact-message" className="text-xs font-semibold text-fg-muted">
-                  What&rsquo;s up?
-                </label>
-                <textarea
-                  id="contact-message"
-                  name="message"
-                  rows={4}
-                  required
-                  className={`mt-1 ${inputClass} resize-none`}
-                />
-              </div>
-
-              <Magnetic>
-                <button
-                  type="submit"
-                  disabled={status === "sending"}
-                  data-cursor-hover
-                  className="rounded-full px-5 py-2.5 text-sm font-semibold text-white transition-opacity disabled:opacity-60"
-                  style={{ background: "var(--color-accent)" }}
-                >
-                  {status === "sending" ? "Sending…" : "Send"}
-                </button>
-              </Magnetic>
-
-              {status === "sent" && (
-                <p className="text-sm" style={{ color: "var(--color-accent-3)" }}>
-                  Thanks — I&rsquo;ll get back to you soon.
-                </p>
-              )}
-              {status === "error" && (
-                <p className="text-sm text-fg-muted">
-                  Something went wrong — try again, or{" "}
-                  <a href={`mailto:${site.email}`} className="underline">
-                    email me directly
-                  </a>
-                  .
-                </p>
-              )}
+            <div
+              className="flex items-center gap-2 px-5 py-4"
+              style={{ background: "var(--terminal-bg-secondary)" }}
+            >
+              <span className="h-3.5 w-3.5 rounded-full" style={{ background: "#ff5f56" }} />
+              <span className="h-3.5 w-3.5 rounded-full" style={{ background: "#ffbd2e" }} />
+              <span className="h-3.5 w-3.5 rounded-full" style={{ background: "#27c93f" }} />
+              <span className="ml-2 font-mono text-sm" style={{ color: "var(--terminal-fg-muted)" }}>
+                compose-message.sh
+              </span>
             </div>
-          </form>
+
+            <div className="p-6 font-mono text-sm sm:p-8 sm:text-base" style={{ color: "var(--terminal-fg)" }}>
+              <p>
+                <span style={{ color: "var(--color-accent-2)" }}>{"$ "}</span>
+                <TypewriterText text={PROMPT_TEXT} speedMs={40} />
+              </p>
+
+              <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-3">
+                <input
+                  type="checkbox"
+                  name="botcheck"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  className="hidden"
+                  aria-hidden="true"
+                />
+
+                <FieldRow id="contact-name" label="name">
+                  <input
+                    id="contact-name"
+                    name="name"
+                    type="text"
+                    required
+                    autoComplete="name"
+                    placeholder="jane doe"
+                    className={fieldClass}
+                    style={{ color: "var(--terminal-fg)" }}
+                  />
+                </FieldRow>
+
+                <FieldRow id="contact-email" label="email">
+                  <input
+                    id="contact-email"
+                    name="email"
+                    type="email"
+                    required
+                    autoComplete="email"
+                    placeholder="you@email.com"
+                    className={fieldClass}
+                    style={{ color: "var(--terminal-fg)" }}
+                  />
+                </FieldRow>
+
+                <div className="flex items-start gap-1.5 sm:gap-2">
+                  <label
+                    htmlFor="contact-message"
+                    className="shrink-0 select-none pt-1"
+                    style={{ color: "var(--color-accent-2)" }}
+                  >
+                    message
+                  </label>
+                  <span aria-hidden="true" className="pt-1" style={{ color: "var(--terminal-fg-muted)" }}>
+                    {">"}
+                  </span>
+                  <textarea
+                    id="contact-message"
+                    name="message"
+                    rows={3}
+                    required
+                    placeholder="say hi, or ask me anything..."
+                    className={`${fieldClass} resize-none`}
+                    style={{ color: "var(--terminal-fg)" }}
+                  />
+                </div>
+
+                <Magnetic>
+                  <button
+                    type="submit"
+                    disabled={status === "sending"}
+                    data-cursor-hover
+                    className="mt-2 w-fit underline decoration-dotted underline-offset-4 transition-opacity disabled:opacity-50"
+                    style={{ color: "var(--color-accent-2)" }}
+                  >
+                    {status === "sending" ? "sending..." : "[enter] send_message()"}
+                  </button>
+                </Magnetic>
+
+                {status === "sent" && (
+                  <p style={{ color: "var(--color-accent-3)" }}>✓ message sent — talk soon.</p>
+                )}
+                {status === "error" && (
+                  <p style={{ color: "var(--terminal-fg-muted)" }}>
+                    ✗ send failed —{" "}
+                    <a href={`mailto:${site.email}`} className="underline" style={{ color: "var(--terminal-fg)" }}>
+                      email me directly
+                    </a>
+                    .
+                  </p>
+                )}
+              </form>
+            </div>
+          </div>
         </Reveal>
       </div>
     </section>
