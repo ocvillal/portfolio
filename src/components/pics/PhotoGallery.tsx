@@ -4,7 +4,6 @@ import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import { withBasePath } from "@/lib/paths";
 import { Reveal } from "@/components/motion/Reveal";
-import { PhotoFeedCard } from "@/components/pics/PhotoFeedCard";
 import { PhotoInfoPanel } from "@/components/pics/PhotoInfoPanel";
 import type { Photo } from "@/types/photo";
 
@@ -36,24 +35,38 @@ export function PhotoGallery({ photos }: { photos: Photo[] }) {
 
   return (
     <>
-      <div className="mx-auto flex max-w-md flex-col gap-6">
+      <div className="columns-2 gap-4 sm:columns-3 [column-fill:_balance]">
         {photos.map((photo, i) => (
-          <Reveal key={photo.slug} delay={(i % 6) * 60}>
-            <PhotoFeedCard photo={photo} onOpen={() => setActiveIndex(i)} />
+          <Reveal key={photo.slug} delay={(i % 6) * 60} className="mb-4 break-inside-avoid">
+            <button
+              type="button"
+              onClick={() => setActiveIndex(i)}
+              data-cursor-hover
+              className="group block w-full overflow-hidden rounded-xl bg-black/10"
+            >
+              <Image
+                src={withBasePath(photo.gridSrc)}
+                alt={photo.alt}
+                width={photo.width}
+                height={photo.height}
+                sizes="(min-width: 640px) 33vw, 50vw"
+                className="w-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+            </button>
           </Reveal>
         ))}
       </div>
 
       {active && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/90 p-4 backdrop-blur-sm"
           onClick={close}
         >
           <button
             type="button"
             onClick={close}
             aria-label="Close"
-            className="absolute right-4 top-4 text-3xl text-white/80 hover:text-white"
+            className="fixed right-4 top-4 z-20 text-3xl text-white/80 hover:text-white"
           >
             ×
           </button>
@@ -64,33 +77,33 @@ export function PhotoGallery({ photos }: { photos: Photo[] }) {
               showPrev();
             }}
             aria-label="Previous photo"
-            className="absolute left-2 top-1/2 -translate-y-1/2 p-3 text-3xl text-white/80 hover:text-white sm:left-4"
+            className="fixed left-2 top-1/2 z-20 -translate-y-1/2 p-3 text-3xl text-white/80 hover:text-white sm:left-4"
           >
             ‹
           </button>
           <div
-            className="relative max-h-[90vh] max-w-full"
+            className="flex w-full max-w-md flex-col items-center gap-3 py-8"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element -- tiny pre-blurred base64 placeholder, not next/image-optimizable */}
-            <img
-              src={active.blurDataURL}
-              alt=""
-              aria-hidden="true"
-              width={active.width}
-              height={active.height}
-              className="max-h-[90vh] max-w-full rounded-lg object-contain"
-            />
-            <Image
-              src={withBasePath(active.fullSrc)}
-              alt={active.alt}
-              width={active.width}
-              height={active.height}
-              priority
-              className="absolute inset-0 max-h-[90vh] max-w-full rounded-lg object-contain"
-            />
-          </div>
-          <div className="absolute bottom-4 left-1/2 z-10 -translate-x-1/2 px-4 sm:bottom-6">
+            <div className="relative max-h-[70vh] max-w-full">
+              {/* eslint-disable-next-line @next/next/no-img-element -- tiny pre-blurred base64 placeholder, not next/image-optimizable */}
+              <img
+                src={active.blurDataURL}
+                alt=""
+                aria-hidden="true"
+                width={active.width}
+                height={active.height}
+                className="max-h-[70vh] max-w-full rounded-lg object-contain"
+              />
+              <Image
+                src={withBasePath(active.fullSrc)}
+                alt={active.alt}
+                width={active.width}
+                height={active.height}
+                priority
+                className="absolute inset-0 max-h-[70vh] max-w-full rounded-lg object-contain"
+              />
+            </div>
             <PhotoInfoPanel key={active.slug} photo={active} />
           </div>
           <button
@@ -100,7 +113,7 @@ export function PhotoGallery({ photos }: { photos: Photo[] }) {
               showNext();
             }}
             aria-label="Next photo"
-            className="absolute right-2 top-1/2 -translate-y-1/2 p-3 text-3xl text-white/80 hover:text-white sm:right-4"
+            className="fixed right-2 top-1/2 z-20 -translate-y-1/2 p-3 text-3xl text-white/80 hover:text-white sm:right-4"
           >
             ›
           </button>
