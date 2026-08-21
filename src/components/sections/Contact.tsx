@@ -114,7 +114,7 @@ export function Contact() {
 
         <Reveal delay={120} className="w-full lg:max-w-xl">
           <div
-            className="w-full overflow-hidden rounded-xl border border-[var(--color-border)]"
+            className="w-full overflow-hidden rounded-xl border border-[var(--color-border)] shadow-2xl"
             style={{ background: "var(--terminal-bg)" }}
           >
             <div
