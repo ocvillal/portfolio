@@ -116,7 +116,6 @@ export const projects: Project[] = [
         kind: "video",
       },
     ],
-    featured: true,
   },
   {
     slug: "llms-are-acds",
